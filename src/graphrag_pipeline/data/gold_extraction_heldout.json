@@ -1,0 +1,415 @@
+{
+ "description": "Held-out extraction gold set: 8 documents written after the extraction rules were frozen, in a different style from the main corpus. Used only for measurement.",
+ "documents": {
+  "tessaly-grid": {
+   "entities": [
+    {
+     "name": "Tessaly Grid",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Orvanne",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Colm Faraday",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Brinehold Storage",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "Brinehold"
+     ]
+    },
+    {
+     "name": "Ada Ruskin",
+     "type": "PERSON",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Tessaly Grid",
+     "LOCATED_IN",
+     "Orvanne"
+    ],
+    [
+     "Colm Faraday",
+     "FOUNDED",
+     "Tessaly Grid"
+    ],
+    [
+     "Tessaly Grid",
+     "ACQUIRED",
+     "Brinehold Storage"
+    ],
+    [
+     "Ada Ruskin",
+     "FOUNDED",
+     "Brinehold Storage"
+    ],
+    [
+     "Ada Ruskin",
+     "WORKS_FOR",
+     "Tessaly Grid"
+    ]
+   ]
+  },
+  "ada-ruskin": {
+   "entities": [
+    {
+     "name": "Ada Ruskin",
+     "type": "PERSON",
+     "aliases": [
+      "Ruskin"
+     ]
+    },
+    {
+     "name": "Lowmere",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Halden University",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Brinehold Storage",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Pellow Chemicals",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Orvanne Energy Forum",
+     "type": "ORGANIZATION",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Ada Ruskin",
+     "BORN_IN",
+     "Lowmere"
+    ],
+    [
+     "Ada Ruskin",
+     "STUDIED_AT",
+     "Halden University"
+    ],
+    [
+     "Ada Ruskin",
+     "FOUNDED",
+     "Brinehold Storage"
+    ],
+    [
+     "Ada Ruskin",
+     "WORKS_FOR",
+     "Pellow Chemicals"
+    ],
+    [
+     "Ada Ruskin",
+     "WORKS_FOR",
+     "Orvanne Energy Forum"
+    ]
+   ]
+  },
+  "kelvane-aero": {
+   "entities": [
+    {
+     "name": "Kelvane Aero",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "Kelvane"
+     ]
+    },
+    {
+     "name": "Brask",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Imre Toth",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Lise Vandal",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Kestrel K2",
+     "type": "PRODUCT",
+     "aliases": [
+      "K2"
+     ]
+    },
+    {
+     "name": "Pellow Motion",
+     "type": "ORGANIZATION",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Kelvane Aero",
+     "LOCATED_IN",
+     "Brask"
+    ],
+    [
+     "Imre Toth",
+     "FOUNDED",
+     "Kelvane Aero"
+    ],
+    [
+     "Lise Vandal",
+     "FOUNDED",
+     "Kelvane Aero"
+    ],
+    [
+     "Kelvane Aero",
+     "MAKES",
+     "Kestrel K2"
+    ],
+    [
+     "Pellow Motion",
+     "SUPPLIES",
+     "Kelvane Aero"
+    ]
+   ]
+  },
+  "brask": {
+   "entities": [
+    {
+     "name": "Brask",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Velde",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Oona Prell",
+     "type": "PERSON",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Brask",
+     "LOCATED_IN",
+     "Velde"
+    ],
+    [
+     "Oona Prell",
+     "LEADS",
+     "Brask"
+    ]
+   ]
+  },
+  "news-kelvane-funding": {
+   "entities": [
+    {
+     "name": "Kelvane Aero",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "Kelvane"
+     ]
+    },
+    {
+     "name": "Marrel Ventures",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Hana Ishii",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Brask",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Kestrel K2",
+     "type": "PRODUCT",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Marrel Ventures",
+     "INVESTED_IN",
+     "Kelvane Aero"
+    ],
+    [
+     "Hana Ishii",
+     "WORKS_FOR",
+     "Marrel Ventures"
+    ],
+    [
+     "Hana Ishii",
+     "WORKS_FOR",
+     "Kelvane Aero"
+    ]
+   ]
+  },
+  "halden-university": {
+   "entities": [
+    {
+     "name": "Halden University",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Lowmere",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Tomasz Wren",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Tessaly Grid",
+     "type": "ORGANIZATION",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Halden University",
+     "LOCATED_IN",
+     "Lowmere"
+    ],
+    [
+     "Tomasz Wren",
+     "LEADS",
+     "Halden University"
+    ],
+    [
+     "Halden University",
+     "PARTNERED_WITH",
+     "Tessaly Grid"
+    ]
+   ]
+  },
+  "pellow-motion": {
+   "entities": [
+    {
+     "name": "Pellow Motion",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Pellow Chemicals",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Orvanne",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Rafe Delacroix",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Kelvane Aero",
+     "type": "ORGANIZATION",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Pellow Motion",
+     "SUBSIDIARY_OF",
+     "Pellow Chemicals"
+    ],
+    [
+     "Pellow Motion",
+     "LOCATED_IN",
+     "Orvanne"
+    ],
+    [
+     "Rafe Delacroix",
+     "LEADS",
+     "Pellow Motion"
+    ],
+    [
+     "Rafe Delacroix",
+     "WORKS_FOR",
+     "Kelvane Aero"
+    ]
+   ]
+  },
+  "imre-toth": {
+   "entities": [
+    {
+     "name": "Imre Toth",
+     "type": "PERSON",
+     "aliases": [
+      "Toth"
+     ]
+    },
+    {
+     "name": "Halden University",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Tessaly Grid",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Kelvane Aero",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Velde",
+     "type": "LOCATION",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Imre Toth",
+     "STUDIED_AT",
+     "Halden University"
+    ],
+    [
+     "Imre Toth",
+     "WORKS_FOR",
+     "Tessaly Grid"
+    ],
+    [
+     "Imre Toth",
+     "FOUNDED",
+     "Kelvane Aero"
+    ],
+    [
+     "Imre Toth",
+     "BORN_IN",
+     "Velde"
+    ]
+   ]
+  }
+ }
+}

@@ -1,0 +1,726 @@
+{
+ "description": "Hand-written multi-hop questions over the fictional sample corpus. 'support' lists one entry per hop; each entry is a list of chunk ids, any one of which supports that hop. Questions marked 'dev' were used to choose retrieval settings; 'test' questions were not.",
+ "questions": [
+  {
+   "id": "q01",
+   "question": "In which city is the company that makes the Halcyon Sensor headquartered?",
+   "answer": "Quorvale",
+   "hops": 2,
+   "split": "dev",
+   "support": [
+    [
+     "halcyon-sensor#0"
+    ],
+    [
+     "velltrix-systems#0"
+    ]
+   ]
+  },
+  {
+   "id": "q02",
+   "question": "Where is the developer of the Glint SDK based?",
+   "answer": "Saltrene",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "glint-sdk#0",
+     "nimbrel-labs#1"
+    ],
+    [
+     "nimbrel-labs#0"
+    ]
+   ]
+  },
+  {
+   "id": "q03",
+   "question": "In which city is the manufacturer of the Wayfarer truck based?",
+   "answer": "Dunmarrow",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "wayfarer#0",
+     "corvane-motors#1"
+    ],
+    [
+     "corvane-motors#0",
+     "news-brightwell-dunmarrow-plant#0"
+    ]
+   ]
+  },
+  {
+   "id": "q04",
+   "question": "Where is the producer of the Ember-9 cell headquartered?",
+   "answer": "Kestrelmoor",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "ember-9#0",
+     "brightwell-cells#1"
+    ],
+    [
+     "brightwell-cells#0"
+    ]
+   ]
+  },
+  {
+   "id": "q05",
+   "question": "In which city is the company behind Atlas Route located?",
+   "answer": "Quorvale",
+   "hops": 2,
+   "split": "dev",
+   "support": [
+    [
+     "atlas-route#0",
+     "quillon-software#1"
+    ],
+    [
+     "quillon-software#0"
+    ]
+   ]
+  },
+  {
+   "id": "q06",
+   "question": "Where is the maker of the Stackbot robot based?",
+   "answer": "Marrowick",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "stackbot#0",
+     "mirelle-robotics#1"
+    ],
+    [
+     "mirelle-robotics#0"
+    ]
+   ]
+  },
+  {
+   "id": "q07",
+   "question": "In which city is the developer of Corallin based?",
+   "answer": "Saltrene",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "corallin#0",
+     "saltwind-bio#1"
+    ],
+    [
+     "saltwind-bio#0"
+    ]
+   ]
+  },
+  {
+   "id": "q08",
+   "question": "Where is the company that makes the Prism-4 lens based?",
+   "answer": "Saltrene",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "prism-4#0",
+     "calder-optics#1"
+    ],
+    [
+     "calder-optics#0"
+    ]
+   ]
+  },
+  {
+   "id": "q09",
+   "question": "Who is the chief executive of the company that makes the Lumen Q3?",
+   "answer": "Hugo Fenwick",
+   "hops": 2,
+   "split": "dev",
+   "support": [
+    [
+     "lumen-q3#0",
+     "lumen-assay#1"
+    ],
+    [
+     "lumen-assay#0",
+     "hugo-fenwick#1"
+    ]
+   ]
+  },
+  {
+   "id": "q10",
+   "question": "Who founded the company that developed the Glint SDK?",
+   "answer": "Tobiah Renn",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "glint-sdk#0",
+     "nimbrel-labs#1"
+    ],
+    [
+     "nimbrel-labs#0",
+     "tobiah-renn#1"
+    ]
+   ]
+  },
+  {
+   "id": "q11",
+   "question": "Who runs the company that makes the Gridvault?",
+   "answer": "Ravi Castellan",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "gridvault#0",
+     "ostrel-energy#1"
+    ],
+    [
+     "ostrel-energy#0",
+     "ravi-castellan#1"
+    ]
+   ]
+  },
+  {
+   "id": "q12",
+   "question": "Who founded the manufacturer of the Wayfarer truck?",
+   "answer": "Ilse Varga",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "wayfarer#0",
+     "corvane-motors#1"
+    ],
+    [
+     "corvane-motors#0",
+     "ilse-varga#1"
+    ]
+   ]
+  },
+  {
+   "id": "q13",
+   "question": "Who is the chief executive of the company that makes the Prism-4 lens?",
+   "answer": "Mei Aldana",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "prism-4#0",
+     "calder-optics#1"
+    ],
+    [
+     "calder-optics#0",
+     "mei-aldana#1"
+    ]
+   ]
+  },
+  {
+   "id": "q14",
+   "question": "Where did the chief executive of Velltrix Systems study?",
+   "answer": "Quorvale Institute of Technology",
+   "hops": 2,
+   "split": "dev",
+   "support": [
+    [
+     "velltrix-systems#0",
+     "mara-okafor#1"
+    ],
+    [
+     "mara-okafor#0"
+    ]
+   ]
+  },
+  {
+   "id": "q15",
+   "question": "In which city was the chief executive of Orrin Freight born?",
+   "answer": "Marrowick",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "orrin-freight#0",
+     "delia-marsh#1"
+    ],
+    [
+     "delia-marsh#0"
+    ]
+   ]
+  },
+  {
+   "id": "q16",
+   "question": "Which university did the founder of Corvane Motors attend?",
+   "answer": "Kestrelmoor Polytechnic",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "corvane-motors#0",
+     "ilse-varga#1"
+    ],
+    [
+     "ilse-varga#0"
+    ]
+   ]
+  },
+  {
+   "id": "q17",
+   "question": "Where was the chief executive of Brightwell Cells born?",
+   "answer": "Vey Harbour",
+   "hops": 2,
+   "split": "dev",
+   "support": [
+    [
+     "brightwell-cells#0",
+     "anton-leclair#1"
+    ],
+    [
+     "anton-leclair#0"
+    ]
+   ]
+  },
+  {
+   "id": "q18",
+   "question": "Which university did the head of Calder Optics attend?",
+   "answer": "Quorvale Institute of Technology",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "calder-optics#0",
+     "mei-aldana#1"
+    ],
+    [
+     "mei-aldana#0"
+    ]
+   ]
+  },
+  {
+   "id": "q19",
+   "question": "Where was the chief executive of Pinecrest Bank born?",
+   "answer": "Dunmarrow",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "pinecrest-bank#0",
+     "lena-morrow#1"
+    ],
+    [
+     "lena-morrow#0"
+    ]
+   ]
+  },
+  {
+   "id": "q20",
+   "question": "Which university did the founder of Saltwind Bio attend?",
+   "answer": "University of Saltrene",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "saltwind-bio#0",
+     "priya-halvorsen#1"
+    ],
+    [
+     "priya-halvorsen#0"
+    ]
+   ]
+  },
+  {
+   "id": "q21",
+   "question": "Where was the managing partner of Harrowgate Capital born?",
+   "answer": "Quorvale",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "harrowgate-capital#0",
+     "oskar-brandt#1"
+    ],
+    [
+     "oskar-brandt#0"
+    ]
+   ]
+  },
+  {
+   "id": "q22",
+   "question": "Which company makes the lens used in the Halcyon Sensor?",
+   "answer": "Calder Optics",
+   "hops": 2,
+   "split": "dev",
+   "support": [
+    [
+     "halcyon-sensor#1"
+    ],
+    [
+     "prism-4#0",
+     "calder-optics#1"
+    ]
+   ]
+  },
+  {
+   "id": "q23",
+   "question": "Which company produces the cells that power the Wayfarer truck?",
+   "answer": "Brightwell Cells",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "wayfarer#1"
+    ],
+    [
+     "ember-9#0",
+     "brightwell-cells#1",
+     "news-brightwell-dunmarrow-plant#0"
+    ]
+   ]
+  },
+  {
+   "id": "q24",
+   "question": "Which company developed the computer-vision software that the Stackbot navigates with?",
+   "answer": "Nimbrel Labs",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "stackbot#1"
+    ],
+    [
+     "glint-sdk#0",
+     "nimbrel-labs#1"
+    ]
+   ]
+  },
+  {
+   "id": "q25",
+   "question": "Who leads the company that supplies the electrolyte used in the Ember-9?",
+   "answer": "Felix Ambrose",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "ember-9#1"
+    ],
+    [
+     "greyfen-materials#0",
+     "felix-ambrose#1"
+    ]
+   ]
+  },
+  {
+   "id": "q26",
+   "question": "Which company manufactures the trucks that Orrin Freight operates?",
+   "answer": "Corvane Motors",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "orrin-freight#1",
+     "news-orrin-fleet-expansion#0"
+    ],
+    [
+     "wayfarer#0",
+     "corvane-motors#1"
+    ]
+   ]
+  },
+  {
+   "id": "q27",
+   "question": "In which city is the company that acquired Nimbrel Labs headquartered?",
+   "answer": "Quorvale",
+   "hops": 2,
+   "split": "dev",
+   "support": [
+    [
+     "velltrix-systems#2",
+     "nimbrel-labs#2"
+    ],
+    [
+     "velltrix-systems#0"
+    ]
+   ]
+  },
+  {
+   "id": "q28",
+   "question": "Who leads the bank that financed the new trucks of Orrin Freight?",
+   "answer": "Lena Morrow",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "pinecrest-bank#1",
+     "news-orrin-fleet-expansion#1"
+    ],
+    [
+     "pinecrest-bank#0",
+     "lena-morrow#1"
+    ]
+   ]
+  },
+  {
+   "id": "q29",
+   "question": "Who leads the company that partnered with Saltwind Bio on clinical trials?",
+   "answer": "Hugo Fenwick",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "lumen-assay#1"
+    ],
+    [
+     "lumen-assay#0",
+     "hugo-fenwick#1"
+    ]
+   ]
+  },
+  {
+   "id": "q30",
+   "question": "In which city is the venture firm that invested in Corvane Motors based?",
+   "answer": "Vey Harbour",
+   "hops": 2,
+   "split": "test",
+   "support": [
+    [
+     "corvane-motors#1",
+     "harrowgate-capital#1",
+     "news-harrowgate-third-fund#1"
+    ],
+    [
+     "harrowgate-capital#0"
+    ]
+   ]
+  },
+  {
+   "id": "q31",
+   "question": "In which province is the company that makes the Halcyon Sensor headquartered?",
+   "answer": "Ashlenmark",
+   "hops": 3,
+   "split": "dev",
+   "support": [
+    [
+     "halcyon-sensor#0"
+    ],
+    [
+     "velltrix-systems#0"
+    ],
+    [
+     "quorvale#0"
+    ]
+   ]
+  },
+  {
+   "id": "q32",
+   "question": "In which province is the producer of the Ember-9 cell headquartered?",
+   "answer": "Highvale",
+   "hops": 3,
+   "split": "test",
+   "support": [
+    [
+     "ember-9#0",
+     "brightwell-cells#1"
+    ],
+    [
+     "brightwell-cells#0"
+    ],
+    [
+     "kestrelmoor#0"
+    ]
+   ]
+  },
+  {
+   "id": "q33",
+   "question": "Which university did the founder of the company that makes the Wayfarer attend?",
+   "answer": "Kestrelmoor Polytechnic",
+   "hops": 3,
+   "split": "test",
+   "support": [
+    [
+     "wayfarer#0",
+     "corvane-motors#1"
+    ],
+    [
+     "corvane-motors#0",
+     "ilse-varga#1"
+    ],
+    [
+     "ilse-varga#0"
+    ]
+   ]
+  },
+  {
+   "id": "q34",
+   "question": "Where did the chief executive of the company that makes the Gridvault study?",
+   "answer": "Quorvale Institute of Technology",
+   "hops": 3,
+   "split": "test",
+   "support": [
+    [
+     "gridvault#0",
+     "ostrel-energy#1"
+    ],
+    [
+     "ostrel-energy#0",
+     "ravi-castellan#1"
+    ],
+    [
+     "ravi-castellan#0"
+    ]
+   ]
+  },
+  {
+   "id": "q35",
+   "question": "In which province is the maker of the robots used at the container terminal of Tidemark Ports based?",
+   "answer": "Coastreach",
+   "hops": 3,
+   "split": "test",
+   "support": [
+    [
+     "mirelle-robotics#1"
+    ],
+    [
+     "mirelle-robotics#0"
+    ],
+    [
+     "marrowick#0"
+    ]
+   ]
+  },
+  {
+   "id": "q36",
+   "question": "Who leads the company that makes the lens used in the Halcyon Sensor?",
+   "answer": "Mei Aldana",
+   "hops": 3,
+   "split": "dev",
+   "support": [
+    [
+     "halcyon-sensor#1"
+    ],
+    [
+     "prism-4#0",
+     "calder-optics#1"
+    ],
+    [
+     "calder-optics#0",
+     "mei-aldana#1"
+    ]
+   ]
+  },
+  {
+   "id": "q37",
+   "question": "In which city is the developer of the software that the Lumen Q3 uses to read cartridges based?",
+   "answer": "Saltrene",
+   "hops": 3,
+   "split": "test",
+   "support": [
+    [
+     "lumen-q3#1"
+    ],
+    [
+     "glint-sdk#0",
+     "nimbrel-labs#1"
+    ],
+    [
+     "nimbrel-labs#0"
+    ]
+   ]
+  },
+  {
+   "id": "q38",
+   "question": "Where was the founder of the company that acquired Nimbrel Labs born?",
+   "answer": "Dunmarrow",
+   "hops": 3,
+   "split": "test",
+   "support": [
+    [
+     "velltrix-systems#2",
+     "nimbrel-labs#2"
+    ],
+    [
+     "velltrix-systems#0"
+    ],
+    [
+     "mara-okafor#0"
+    ]
+   ]
+  },
+  {
+   "id": "q39",
+   "question": "In which city is the company that produces the cells used in the Gridvault headquartered?",
+   "answer": "Kestrelmoor",
+   "hops": 3,
+   "split": "test",
+   "support": [
+    [
+     "gridvault#1",
+     "ostrel-energy#1"
+    ],
+    [
+     "ember-9#0",
+     "brightwell-cells#1",
+     "news-brightwell-dunmarrow-plant#0"
+    ],
+    [
+     "brightwell-cells#0"
+    ]
+   ]
+  },
+  {
+   "id": "q40",
+   "question": "Who leads the company that supplies the electrolyte for the cells that power the Wayfarer?",
+   "answer": "Felix Ambrose",
+   "hops": 3,
+   "split": "test",
+   "support": [
+    [
+     "wayfarer#1"
+    ],
+    [
+     "ember-9#1"
+    ],
+    [
+     "greyfen-materials#0",
+     "felix-ambrose#1"
+    ]
+   ]
+  },
+  {
+   "id": "q41",
+   "question": "In which province was the chief executive of Lumen Assay born?",
+   "answer": "Highvale",
+   "hops": 3,
+   "split": "dev",
+   "support": [
+    [
+     "lumen-assay#0",
+     "hugo-fenwick#1"
+    ],
+    [
+     "hugo-fenwick#0"
+    ],
+    [
+     "kestrelmoor#0"
+    ]
+   ]
+  },
+  {
+   "id": "q42",
+   "question": "Which university did the chief executive of the bank that financed Orrin Freight attend?",
+   "answer": "University of Saltrene",
+   "hops": 3,
+   "split": "test",
+   "support": [
+    [
+     "pinecrest-bank#1",
+     "news-orrin-fleet-expansion#1"
+    ],
+    [
+     "pinecrest-bank#0",
+     "lena-morrow#1"
+    ],
+    [
+     "lena-morrow#0"
+    ]
+   ]
+  }
+ ]
+}

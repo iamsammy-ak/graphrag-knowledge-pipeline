@@ -1,0 +1,4934 @@
+{
+ "date": "2026-11-20",
+ "command": "graphrag bench --embedder bge --chart assets/benchmark.png",
+ "python": "3.13.2",
+ "corpus": {
+  "documents": 54,
+  "chunks": 109,
+  "entities": 59,
+  "typed_relations": 161,
+  "cooccurrence_relations": 35,
+  "extractor": "spacy-rules"
+ },
+ "variants": {
+  "vector": "dense top-k over chunks (title-prefixed), cosine similarity",
+  "graph-ppr": "ablation: structural personalised PageRank from the linked entities (question used only for linking)",
+  "graph-unmasked": "ablation: relation-aware beam search, but edge relevance computed without masking entity names",
+  "graph": "graph local search: relation-aware beam search over relation paths (entity names masked)",
+  "hybrid": "weighted reciprocal rank fusion of graph (weight 3) and vector (weight 1), k = 10"
+ },
+ "retrieval": {
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "ks": [
+   3,
+   5,
+   10
+  ],
+  "methods": [
+   "vector",
+   "graph-ppr",
+   "graph-unmasked",
+   "graph",
+   "hybrid"
+  ],
+  "summary": {
+   "all": {
+    "vector": {
+     "questions": 42,
+     "recall@3": 0.496,
+     "full@3": 0.0952,
+     "recall@5": 0.5754,
+     "full@5": 0.2381,
+     "recall@10": 0.7421,
+     "full@10": 0.4762
+    },
+    "graph-ppr": {
+     "questions": 42,
+     "recall@3": 0.3968,
+     "full@3": 0.0,
+     "recall@5": 0.5476,
+     "full@5": 0.1667,
+     "recall@10": 0.746,
+     "full@10": 0.4762
+    },
+    "graph-unmasked": {
+     "questions": 42,
+     "recall@3": 0.4881,
+     "full@3": 0.0952,
+     "recall@5": 0.6389,
+     "full@5": 0.3095,
+     "recall@10": 0.8611,
+     "full@10": 0.6667
+    },
+    "graph": {
+     "questions": 42,
+     "recall@3": 0.7817,
+     "full@3": 0.5952,
+     "recall@5": 0.9008,
+     "full@5": 0.8095,
+     "recall@10": 0.9603,
+     "full@10": 0.9286
+    },
+    "hybrid": {
+     "questions": 42,
+     "recall@3": 0.7262,
+     "full@3": 0.4524,
+     "recall@5": 0.869,
+     "full@5": 0.7381,
+     "recall@10": 0.9683,
+     "full@10": 0.9286
+    }
+   },
+   "test": {
+    "vector": {
+     "questions": 32,
+     "recall@3": 0.4688,
+     "full@3": 0.0625,
+     "recall@5": 0.5469,
+     "full@5": 0.1875,
+     "recall@10": 0.7552,
+     "full@10": 0.5
+    },
+    "graph-ppr": {
+     "questions": 32,
+     "recall@3": 0.3802,
+     "full@3": 0.0,
+     "recall@5": 0.5208,
+     "full@5": 0.125,
+     "recall@10": 0.7708,
+     "full@10": 0.5312
+    },
+    "graph-unmasked": {
+     "questions": 32,
+     "recall@3": 0.4479,
+     "full@3": 0.0625,
+     "recall@5": 0.6146,
+     "full@5": 0.2812,
+     "recall@10": 0.8594,
+     "full@10": 0.6562
+    },
+    "graph": {
+     "questions": 32,
+     "recall@3": 0.7708,
+     "full@3": 0.5938,
+     "recall@5": 0.8698,
+     "full@5": 0.75,
+     "recall@10": 0.9479,
+     "full@10": 0.9062
+    },
+    "hybrid": {
+     "questions": 32,
+     "recall@3": 0.7344,
+     "full@3": 0.5,
+     "recall@5": 0.8594,
+     "full@5": 0.7188,
+     "recall@10": 0.9583,
+     "full@10": 0.9062
+    }
+   },
+   "dev": {
+    "vector": {
+     "questions": 10,
+     "recall@3": 0.5833,
+     "full@3": 0.2,
+     "recall@5": 0.6667,
+     "full@5": 0.4,
+     "recall@10": 0.7,
+     "full@10": 0.4
+    },
+    "graph-ppr": {
+     "questions": 10,
+     "recall@3": 0.45,
+     "full@3": 0.0,
+     "recall@5": 0.6333,
+     "full@5": 0.3,
+     "recall@10": 0.6667,
+     "full@10": 0.3
+    },
+    "graph-unmasked": {
+     "questions": 10,
+     "recall@3": 0.6167,
+     "full@3": 0.2,
+     "recall@5": 0.7167,
+     "full@5": 0.4,
+     "recall@10": 0.8667,
+     "full@10": 0.7
+    },
+    "graph": {
+     "questions": 10,
+     "recall@3": 0.8167,
+     "full@3": 0.6,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "questions": 10,
+     "recall@3": 0.7,
+     "full@3": 0.3,
+     "recall@5": 0.9,
+     "full@5": 0.8,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   "2-hop": {
+    "vector": {
+     "questions": 30,
+     "recall@3": 0.55,
+     "full@3": 0.1333,
+     "recall@5": 0.6167,
+     "full@5": 0.2667,
+     "recall@10": 0.7833,
+     "full@10": 0.5667
+    },
+    "graph-ppr": {
+     "questions": 30,
+     "recall@3": 0.4333,
+     "full@3": 0.0,
+     "recall@5": 0.6,
+     "full@5": 0.2333,
+     "recall@10": 0.8333,
+     "full@10": 0.6667
+    },
+    "graph-unmasked": {
+     "questions": 30,
+     "recall@3": 0.55,
+     "full@3": 0.1333,
+     "recall@5": 0.7167,
+     "full@5": 0.4333,
+     "recall@10": 0.9167,
+     "full@10": 0.8333
+    },
+    "graph": {
+     "questions": 30,
+     "recall@3": 0.8833,
+     "full@3": 0.7667,
+     "recall@5": 0.9833,
+     "full@5": 0.9667,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "questions": 30,
+     "recall@3": 0.8167,
+     "full@3": 0.6333,
+     "recall@5": 0.95,
+     "full@5": 0.9,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   "3-hop": {
+    "vector": {
+     "questions": 12,
+     "recall@3": 0.3611,
+     "full@3": 0.0,
+     "recall@5": 0.4722,
+     "full@5": 0.1667,
+     "recall@10": 0.6389,
+     "full@10": 0.25
+    },
+    "graph-ppr": {
+     "questions": 12,
+     "recall@3": 0.3056,
+     "full@3": 0.0,
+     "recall@5": 0.4167,
+     "full@5": 0.0,
+     "recall@10": 0.5278,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "questions": 12,
+     "recall@3": 0.3333,
+     "full@3": 0.0,
+     "recall@5": 0.4444,
+     "full@5": 0.0,
+     "recall@10": 0.7222,
+     "full@10": 0.25
+    },
+    "graph": {
+     "questions": 12,
+     "recall@3": 0.5278,
+     "full@3": 0.1667,
+     "recall@5": 0.6944,
+     "full@5": 0.4167,
+     "recall@10": 0.8611,
+     "full@10": 0.75
+    },
+    "hybrid": {
+     "questions": 12,
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.6667,
+     "full@5": 0.3333,
+     "recall@10": 0.8889,
+     "full@10": 0.75
+    }
+   }
+  },
+  "per_question": [
+   {
+    "id": "q01",
+    "hops": 2,
+    "split": "dev",
+    "vector": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "halcyon-sensor#1",
+      "university-of-saltrene#1",
+      "saltrene#1",
+      "velltrix-systems#0",
+      "brightwell-cells#0",
+      "mirelle-robotics#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2",
+      "mara-okafor#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "halcyon-sensor#1",
+      "wayfarer#1",
+      "news-glint-milestone#1",
+      "calder-optics#1",
+      "mara-okafor#1",
+      "nimbrel-labs#2",
+      "news-glint-milestone#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "velltrix-systems#0",
+      "wayfarer#1",
+      "halcyon-sensor#1",
+      "velltrix-systems#2",
+      "nimbrel-labs#2",
+      "calder-optics#1",
+      "mara-okafor#1",
+      "nimbrel-labs#0",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "velltrix-systems#0",
+      "quillon-software#0",
+      "mara-okafor#1",
+      "halcyon-sensor#1",
+      "velltrix-systems#2",
+      "nimbrel-labs#2",
+      "quorvale#0",
+      "tobiah-renn#1",
+      "oskar-brandt#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "velltrix-systems#0",
+      "halcyon-sensor#1",
+      "mara-okafor#1",
+      "velltrix-systems#2",
+      "quillon-software#0",
+      "tobiah-renn#1",
+      "nimbrel-labs#2",
+      "mirelle-robotics#0",
+      "nimbrel-labs#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q02",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "glint-sdk#0",
+      "glint-sdk#1",
+      "news-glint-milestone#1",
+      "news-glint-milestone#0",
+      "nimbrel-labs#1",
+      "sana-idris#1",
+      "lumen-q3#1",
+      "stackbot#1",
+      "calder-optics#0",
+      "mei-aldana#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "glint-sdk#1",
+      "glint-sdk#0",
+      "stackbot#1",
+      "lumen-q3#1",
+      "news-glint-milestone#0",
+      "nimbrel-labs#1",
+      "sana-idris#1",
+      "mirelle-robotics#0",
+      "nimbrel-labs#2",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "glint-sdk#0",
+      "nimbrel-labs#1",
+      "lumen-q3#1",
+      "sana-idris#1",
+      "stackbot#1",
+      "nimbrel-labs#0",
+      "velltrix-systems#2",
+      "mirelle-robotics#0",
+      "tobiah-renn#1",
+      "nimbrel-labs#2"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "glint-sdk#0",
+      "nimbrel-labs#0",
+      "calder-optics#0",
+      "mirelle-robotics#0",
+      "tobiah-renn#1",
+      "sana-idris#1",
+      "nimbrel-labs#1",
+      "saltwind-bio#0",
+      "velltrix-systems#2",
+      "velltrix-systems#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "glint-sdk#0",
+      "calder-optics#0",
+      "nimbrel-labs#0",
+      "sana-idris#1",
+      "nimbrel-labs#1",
+      "tobiah-renn#1",
+      "mirelle-robotics#0",
+      "velltrix-systems#2",
+      "velltrix-systems#0",
+      "saltwind-bio#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q03",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#1",
+      "wayfarer#1",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#0",
+      "corvane-motors#0",
+      "marrowick#1",
+      "orrin-freight#0",
+      "dunmarrow#0",
+      "quillon-software#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "wayfarer#0",
+      "wayfarer#1",
+      "corvane-motors#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "ilse-varga#1",
+      "corvane-motors#0",
+      "delia-marsh#1",
+      "oskar-brandt#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#1",
+      "news-orrin-fleet-expansion#0",
+      "corvane-motors#0",
+      "orrin-freight#1",
+      "wayfarer#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "orrin-freight#0",
+      "ilse-varga#1",
+      "dunmarrow#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "corvane-motors#0",
+      "wayfarer#0",
+      "ashgrove-foods#0",
+      "corvane-motors#1",
+      "dunmarrow#0",
+      "greyfen-materials#0",
+      "news-orrin-fleet-expansion#0",
+      "wayfarer#1",
+      "orrin-freight#1",
+      "news-brightwell-dunmarrow-plant#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#0",
+      "corvane-motors#1",
+      "dunmarrow#0",
+      "ashgrove-foods#0",
+      "wayfarer#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "greyfen-materials#0",
+      "orrin-freight#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q04",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "ember-9#0",
+      "brightwell-cells#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "gridvault#1",
+      "brightwell-cells#0",
+      "ostrel-energy#1",
+      "ember-9#1",
+      "mara-okafor#1",
+      "anton-leclair#1",
+      "greta-solberg#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "ember-9#0",
+      "gridvault#1",
+      "brightwell-cells#1",
+      "ostrel-energy#1",
+      "ember-9#1",
+      "wayfarer#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "greyfen-materials#1",
+      "gridvault#0",
+      "anton-leclair#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "ember-9#0",
+      "brightwell-cells#1",
+      "ostrel-energy#1",
+      "gridvault#1",
+      "wayfarer#1",
+      "ember-9#1",
+      "brightwell-cells#0",
+      "greyfen-materials#1",
+      "greta-solberg#1",
+      "kestrelmoor-polytechnic#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "ember-9#0",
+      "brightwell-cells#0",
+      "brightwell-cells#1",
+      "ashgrove-foods#0",
+      "news-brightwell-dunmarrow-plant#0",
+      "ravi-castellan#1",
+      "greyfen-materials#1",
+      "ostrel-energy#0",
+      "ostrel-energy#1",
+      "greyfen-materials#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "ember-9#0",
+      "brightwell-cells#0",
+      "brightwell-cells#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "ravi-castellan#1",
+      "ashgrove-foods#0",
+      "ostrel-energy#1",
+      "greyfen-materials#1",
+      "ostrel-energy#0",
+      "greta-solberg#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q05",
+    "hops": 2,
+    "split": "dev",
+    "vector": {
+     "ranked": [
+      "atlas-route#0",
+      "atlas-route#1",
+      "quillon-software#1",
+      "orrin-freight#1",
+      "orrin-freight#0",
+      "corvane-motors#1",
+      "ilse-varga#1",
+      "wayfarer#0",
+      "marrowick#1",
+      "corvane-motors#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "atlas-route#0",
+      "quillon-software#1",
+      "orrin-freight#1",
+      "jun-takeda#1",
+      "quillon-software#0",
+      "jun-takeda#0",
+      "quorvale#1",
+      "quorvale-institute-of-technology#0",
+      "oskar-brandt#0",
+      "ravi-castellan#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "atlas-route#0",
+      "quillon-software#1",
+      "jun-takeda#1",
+      "quillon-software#0",
+      "orrin-freight#0",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#0",
+      "delia-marsh#1",
+      "velltrix-systems#0",
+      "pinecrest-bank#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "atlas-route#0",
+      "velltrix-systems#0",
+      "quillon-software#0",
+      "orrin-freight#0",
+      "quillon-software#1",
+      "jun-takeda#1",
+      "oskar-brandt#0",
+      "ravi-castellan#0",
+      "quorvale#0",
+      "quorvale-institute-of-technology#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "atlas-route#0",
+      "orrin-freight#0",
+      "quillon-software#1",
+      "velltrix-systems#0",
+      "quillon-software#0",
+      "jun-takeda#1",
+      "orrin-freight#1",
+      "oskar-brandt#0",
+      "delia-marsh#1",
+      "news-orrin-fleet-expansion#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q06",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "stackbot#0",
+      "mirelle-robotics#1",
+      "stackbot#1",
+      "mirelle-robotics#0",
+      "sana-idris#1",
+      "velltrix-systems#0",
+      "velltrix-systems#2",
+      "university-of-saltrene#1",
+      "mara-okafor#1",
+      "nimbrel-labs#2"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "stackbot#0",
+      "mirelle-robotics#1",
+      "stackbot#1",
+      "sana-idris#1",
+      "mirelle-robotics#0",
+      "glint-sdk#1",
+      "glint-sdk#0",
+      "orrin-freight#0",
+      "nimbrel-labs#1",
+      "delia-marsh#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "stackbot#0",
+      "mirelle-robotics#1",
+      "mirelle-robotics#0",
+      "stackbot#1",
+      "sana-idris#1",
+      "glint-sdk#0",
+      "nimbrel-labs#1",
+      "orrin-freight#0",
+      "sana-idris#0",
+      "nimbrel-labs#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "stackbot#0",
+      "mirelle-robotics#0",
+      "mirelle-robotics#1",
+      "orrin-freight#0",
+      "sana-idris#1",
+      "delia-marsh#0",
+      "tobiah-renn#0",
+      "marrowick#0",
+      "stackbot#1",
+      "delia-marsh#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "stackbot#0",
+      "mirelle-robotics#0",
+      "mirelle-robotics#1",
+      "sana-idris#1",
+      "stackbot#1",
+      "orrin-freight#0",
+      "delia-marsh#0",
+      "tobiah-renn#0",
+      "velltrix-systems#2",
+      "marrowick#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q07",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "corallin#0",
+      "corallin#1",
+      "saltwind-bio#1",
+      "marrowick#0",
+      "orrin-freight#0",
+      "marrowick#1",
+      "university-of-saltrene#1",
+      "harrowgate-capital#1",
+      "velltrix-systems#0",
+      "tidemark-ports#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "corallin#0",
+      "corallin#1",
+      "saltwind-bio#1",
+      "lumen-assay#1",
+      "priya-halvorsen#1",
+      "saltwind-bio#0",
+      "harrowgate-capital#1",
+      "hugo-fenwick#1",
+      "lumen-assay#0",
+      "priya-halvorsen#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "corallin#0",
+      "corallin#1",
+      "saltwind-bio#1",
+      "lumen-assay#1",
+      "harrowgate-capital#0",
+      "saltwind-bio#0",
+      "pinecrest-bank#0",
+      "lumen-assay#0",
+      "priya-halvorsen#0",
+      "vey-harbour#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "corallin#0",
+      "saltwind-bio#0",
+      "calder-optics#0",
+      "saltrene#0",
+      "nimbrel-labs#0",
+      "lumen-assay#0",
+      "corallin#1",
+      "harrowgate-capital#0",
+      "saltwind-bio#1",
+      "mei-aldana#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "corallin#0",
+      "saltwind-bio#0",
+      "corallin#1",
+      "calder-optics#0",
+      "saltrene#0",
+      "saltwind-bio#1",
+      "nimbrel-labs#0",
+      "harrowgate-capital#0",
+      "lumen-assay#0",
+      "marrowick#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q08",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "prism-4#0",
+      "calder-optics#1",
+      "halcyon-sensor#1",
+      "mei-aldana#1",
+      "calder-optics#0",
+      "velltrix-systems#2",
+      "nimbrel-labs#1",
+      "halcyon-sensor#0",
+      "news-glint-milestone#1",
+      "saltrene#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "prism-4#0",
+      "calder-optics#1",
+      "halcyon-sensor#1",
+      "halcyon-sensor#0",
+      "mei-aldana#1",
+      "calder-optics#0",
+      "news-glint-milestone#1",
+      "mara-okafor#1",
+      "nimbrel-labs#2",
+      "news-glint-milestone#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "prism-4#0",
+      "calder-optics#1",
+      "halcyon-sensor#1",
+      "calder-optics#0",
+      "mei-aldana#1",
+      "halcyon-sensor#0",
+      "velltrix-systems#2",
+      "velltrix-systems#0",
+      "nimbrel-labs#0",
+      "nimbrel-labs#2"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "calder-optics#0",
+      "prism-4#0",
+      "calder-optics#1",
+      "nimbrel-labs#0",
+      "halcyon-sensor#0",
+      "velltrix-systems#2",
+      "velltrix-systems#0",
+      "saltwind-bio#0",
+      "halcyon-sensor#1",
+      "glint-sdk#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "prism-4#0",
+      "calder-optics#0",
+      "calder-optics#1",
+      "halcyon-sensor#0",
+      "velltrix-systems#2",
+      "nimbrel-labs#0",
+      "halcyon-sensor#1",
+      "mei-aldana#1",
+      "velltrix-systems#0",
+      "glint-sdk#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q09",
+    "hops": 2,
+    "split": "dev",
+    "vector": {
+     "ranked": [
+      "lumen-q3#0",
+      "lumen-assay#1",
+      "lumen-assay#0",
+      "hugo-fenwick#1",
+      "lumen-q3#1",
+      "mara-okafor#1",
+      "tobiah-renn#1",
+      "velltrix-systems#2",
+      "mei-aldana#1",
+      "velltrix-systems#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "lumen-q3#0",
+      "lumen-q3#1",
+      "lumen-assay#1",
+      "hugo-fenwick#1",
+      "lumen-assay#0",
+      "glint-sdk#1",
+      "glint-sdk#0",
+      "stackbot#1",
+      "news-glint-milestone#0",
+      "nimbrel-labs#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "lumen-q3#0",
+      "lumen-assay#1",
+      "hugo-fenwick#1",
+      "lumen-assay#0",
+      "harrowgate-capital#0",
+      "pinecrest-bank#0",
+      "lumen-q3#1",
+      "hugo-fenwick#0",
+      "saltwind-bio#1",
+      "vey-harbour#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "hugo-fenwick#1",
+      "lumen-q3#0",
+      "lumen-assay#0",
+      "lumen-assay#1",
+      "harrowgate-capital#0",
+      "pinecrest-bank#0",
+      "hugo-fenwick#0",
+      "vey-harbour#0",
+      "anton-leclair#0",
+      "priya-halvorsen#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "hugo-fenwick#1",
+      "lumen-q3#0",
+      "lumen-assay#0",
+      "lumen-assay#1",
+      "lumen-q3#1",
+      "harrowgate-capital#0",
+      "pinecrest-bank#0",
+      "hugo-fenwick#0",
+      "vey-harbour#0",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q10",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "glint-sdk#0",
+      "glint-sdk#1",
+      "nimbrel-labs#1",
+      "news-glint-milestone#1",
+      "news-glint-milestone#0",
+      "sana-idris#1",
+      "lumen-q3#1",
+      "stackbot#1",
+      "mei-aldana#1",
+      "velltrix-systems#2"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "glint-sdk#1",
+      "glint-sdk#0",
+      "stackbot#1",
+      "lumen-q3#1",
+      "news-glint-milestone#0",
+      "nimbrel-labs#1",
+      "sana-idris#1",
+      "mirelle-robotics#0",
+      "nimbrel-labs#2",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "glint-sdk#0",
+      "nimbrel-labs#1",
+      "lumen-q3#1",
+      "sana-idris#1",
+      "stackbot#1",
+      "velltrix-systems#2",
+      "nimbrel-labs#0",
+      "tobiah-renn#1",
+      "mirelle-robotics#0",
+      "nimbrel-labs#2"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "glint-sdk#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2",
+      "sana-idris#1",
+      "nimbrel-labs#0",
+      "mirelle-robotics#0",
+      "nimbrel-labs#1",
+      "velltrix-systems#0",
+      "saltwind-bio#0",
+      "nimbrel-labs#2"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "glint-sdk#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2",
+      "sana-idris#1",
+      "nimbrel-labs#1",
+      "nimbrel-labs#0",
+      "mirelle-robotics#0",
+      "velltrix-systems#0",
+      "saltwind-bio#0",
+      "nimbrel-labs#2"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q11",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "gridvault#0",
+      "ostrel-energy#1",
+      "gridvault#1",
+      "calder-optics#1",
+      "corvane-motors#1",
+      "oskar-brandt#1",
+      "corvane-motors#0",
+      "ostrel-energy#0",
+      "harrowgate-capital#1",
+      "ilse-varga#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "gridvault#0",
+      "gridvault#1",
+      "ostrel-energy#1",
+      "ember-9#0",
+      "ravi-castellan#1",
+      "ostrel-energy#0",
+      "brightwell-cells#1",
+      "ember-9#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "wayfarer#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "gridvault#0",
+      "ostrel-energy#1",
+      "gridvault#1",
+      "ostrel-energy#0",
+      "ravi-castellan#1",
+      "ember-9#0",
+      "brightwell-cells#0",
+      "brightwell-cells#1",
+      "greta-solberg#0",
+      "ilse-varga#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "gridvault#0",
+      "brightwell-cells#0",
+      "ostrel-energy#0",
+      "ostrel-energy#1",
+      "ravi-castellan#1",
+      "greta-solberg#0",
+      "hugo-fenwick#0",
+      "ilse-varga#0",
+      "ember-9#0",
+      "ravi-castellan#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "gridvault#0",
+      "ostrel-energy#1",
+      "brightwell-cells#0",
+      "ostrel-energy#0",
+      "ravi-castellan#1",
+      "gridvault#1",
+      "greta-solberg#0",
+      "ember-9#0",
+      "hugo-fenwick#0",
+      "ilse-varga#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q12",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#1",
+      "wayfarer#1",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#0",
+      "corvane-motors#0",
+      "felix-ambrose#1",
+      "ilse-varga#1",
+      "orrin-freight#0",
+      "marrowick#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "wayfarer#0",
+      "wayfarer#1",
+      "corvane-motors#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "ilse-varga#1",
+      "corvane-motors#0",
+      "delia-marsh#1",
+      "oskar-brandt#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#1",
+      "news-orrin-fleet-expansion#0",
+      "corvane-motors#0",
+      "orrin-freight#1",
+      "wayfarer#1",
+      "news-harrowgate-third-fund#1",
+      "ilse-varga#1",
+      "oskar-brandt#1",
+      "news-brightwell-dunmarrow-plant#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "corvane-motors#0",
+      "wayfarer#0",
+      "corvane-motors#1",
+      "ashgrove-foods#0",
+      "greyfen-materials#0",
+      "wayfarer#1",
+      "news-orrin-fleet-expansion#0",
+      "news-brightwell-dunmarrow-plant#0",
+      "felix-ambrose#0",
+      "lena-morrow#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#0",
+      "corvane-motors#1",
+      "wayfarer#1",
+      "news-orrin-fleet-expansion#0",
+      "greyfen-materials#0",
+      "ashgrove-foods#0",
+      "orrin-freight#1",
+      "orrin-freight#0",
+      "ilse-varga#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q13",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "calder-optics#1",
+      "prism-4#0",
+      "mei-aldana#1",
+      "halcyon-sensor#1",
+      "velltrix-systems#2",
+      "mara-okafor#1",
+      "calder-optics#0",
+      "tobiah-renn#1",
+      "nimbrel-labs#1",
+      "brightwell-cells#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "prism-4#0",
+      "calder-optics#1",
+      "halcyon-sensor#1",
+      "halcyon-sensor#0",
+      "mei-aldana#1",
+      "calder-optics#0",
+      "news-glint-milestone#1",
+      "mara-okafor#1",
+      "nimbrel-labs#2",
+      "news-glint-milestone#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "prism-4#0",
+      "calder-optics#1",
+      "halcyon-sensor#1",
+      "calder-optics#0",
+      "mei-aldana#1",
+      "halcyon-sensor#0",
+      "mara-okafor#1",
+      "velltrix-systems#2",
+      "velltrix-systems#0",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "calder-optics#1",
+      "calder-optics#0",
+      "prism-4#0",
+      "mara-okafor#1",
+      "mei-aldana#1",
+      "halcyon-sensor#0",
+      "velltrix-systems#2",
+      "velltrix-systems#0",
+      "nimbrel-labs#0",
+      "saltwind-bio#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "calder-optics#1",
+      "prism-4#0",
+      "calder-optics#0",
+      "mei-aldana#1",
+      "mara-okafor#1",
+      "velltrix-systems#2",
+      "halcyon-sensor#0",
+      "velltrix-systems#0",
+      "halcyon-sensor#1",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q14",
+    "hops": 2,
+    "split": "dev",
+    "vector": {
+     "ranked": [
+      "velltrix-systems#0",
+      "mara-okafor#1",
+      "velltrix-systems#1",
+      "velltrix-systems#2",
+      "tobiah-renn#1",
+      "nimbrel-labs#2",
+      "anton-leclair#1",
+      "hugo-fenwick#1",
+      "greta-solberg#1",
+      "calder-optics#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "news-glint-milestone#1",
+      "mara-okafor#1",
+      "nimbrel-labs#2",
+      "halcyon-sensor#0",
+      "news-glint-milestone#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2",
+      "velltrix-systems#0",
+      "halcyon-sensor#1",
+      "calder-optics#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "tobiah-renn#1",
+      "mara-okafor#1",
+      "velltrix-systems#0",
+      "velltrix-systems#2",
+      "calder-optics#1",
+      "nimbrel-labs#2",
+      "halcyon-sensor#0",
+      "halcyon-sensor#1",
+      "quillon-software#0",
+      "quorvale-institute-of-technology#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "mara-okafor#1",
+      "tobiah-renn#1",
+      "velltrix-systems#0",
+      "velltrix-systems#2",
+      "mara-okafor#0",
+      "tobiah-renn#0",
+      "halcyon-sensor#0",
+      "calder-optics#0",
+      "mei-aldana#1",
+      "quillon-software#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "mara-okafor#1",
+      "velltrix-systems#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2",
+      "halcyon-sensor#0",
+      "mara-okafor#0",
+      "tobiah-renn#0",
+      "calder-optics#1",
+      "mei-aldana#1",
+      "calder-optics#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q15",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "orrin-freight#0",
+      "delia-marsh#1",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#0",
+      "pinecrest-bank#1",
+      "news-orrin-fleet-expansion#1",
+      "ashgrove-foods#1",
+      "quillon-software#1",
+      "dunmarrow#0",
+      "lena-morrow#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "delia-marsh#1",
+      "orrin-freight#0",
+      "pinecrest-bank#1",
+      "ashgrove-foods#1",
+      "quillon-software#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#1",
+      "delia-marsh#0",
+      "wayfarer#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "orrin-freight#0",
+      "quillon-software#1",
+      "delia-marsh#1",
+      "orrin-freight#1",
+      "ashgrove-foods#1",
+      "pinecrest-bank#1",
+      "news-orrin-fleet-expansion#0",
+      "marrowick#0",
+      "tobiah-renn#0",
+      "tidemark-ports#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "orrin-freight#0",
+      "delia-marsh#0",
+      "tobiah-renn#0",
+      "delia-marsh#1",
+      "quillon-software#1",
+      "jun-takeda#1",
+      "marrowick#0",
+      "tobiah-renn#1",
+      "mirelle-robotics#0",
+      "quillon-software#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "orrin-freight#0",
+      "delia-marsh#1",
+      "delia-marsh#0",
+      "quillon-software#1",
+      "tobiah-renn#0",
+      "marrowick#0",
+      "tobiah-renn#1",
+      "jun-takeda#1",
+      "orrin-freight#1",
+      "mirelle-robotics#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q16",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "corvane-motors#0",
+      "corvane-motors#1",
+      "ilse-varga#1",
+      "oskar-brandt#1",
+      "news-harrowgate-third-fund#1",
+      "wayfarer#0",
+      "harrowgate-capital#1",
+      "quorvale-institute-of-technology#0",
+      "kestrelmoor-polytechnic#0",
+      "oskar-brandt#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "ilse-varga#1",
+      "wayfarer#0",
+      "corvane-motors#0",
+      "oskar-brandt#1",
+      "news-harrowgate-third-fund#1",
+      "corvane-motors#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "harrowgate-capital#1",
+      "news-harrowgate-third-fund#0",
+      "harrowgate-capital#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "corvane-motors#0",
+      "wayfarer#0",
+      "corvane-motors#1",
+      "oskar-brandt#1",
+      "ilse-varga#1",
+      "news-harrowgate-third-fund#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "ilse-varga#0",
+      "oskar-brandt#0",
+      "dunmarrow#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "corvane-motors#1",
+      "corvane-motors#0",
+      "wayfarer#0",
+      "oskar-brandt#1",
+      "felix-ambrose#0",
+      "lena-morrow#0",
+      "ilse-varga#0",
+      "oskar-brandt#0",
+      "harrowgate-capital#0",
+      "news-harrowgate-third-fund#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "corvane-motors#1",
+      "corvane-motors#0",
+      "wayfarer#0",
+      "oskar-brandt#1",
+      "felix-ambrose#0",
+      "oskar-brandt#0",
+      "news-harrowgate-third-fund#1",
+      "ilse-varga#0",
+      "ilse-varga#1",
+      "lena-morrow#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q17",
+    "hops": 2,
+    "split": "dev",
+    "vector": {
+     "ranked": [
+      "brightwell-cells#0",
+      "greta-solberg#1",
+      "ravi-castellan#1",
+      "anton-leclair#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "kestrelmoor-polytechnic#1",
+      "brightwell-cells#1",
+      "news-brightwell-dunmarrow-plant#1",
+      "ostrel-energy#0",
+      "mara-okafor#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "ember-9#0",
+      "kestrelmoor-polytechnic#0",
+      "anton-leclair#1",
+      "brightwell-cells#1",
+      "greta-solberg#1",
+      "kestrelmoor-polytechnic#1",
+      "greyfen-materials#1",
+      "ravi-castellan#1",
+      "brightwell-cells#0",
+      "news-brightwell-dunmarrow-plant#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "anton-leclair#1",
+      "brightwell-cells#0",
+      "greyfen-materials#1",
+      "ostrel-energy#0",
+      "greta-solberg#1",
+      "ravi-castellan#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "kestrelmoor-polytechnic#1",
+      "brightwell-cells#1",
+      "ember-9#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "brightwell-cells#0",
+      "ostrel-energy#0",
+      "anton-leclair#1",
+      "anton-leclair#0",
+      "greta-solberg#0",
+      "ravi-castellan#1",
+      "greta-solberg#1",
+      "ravi-castellan#0",
+      "hugo-fenwick#0",
+      "ilse-varga#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "brightwell-cells#0",
+      "ostrel-energy#0",
+      "anton-leclair#1",
+      "ravi-castellan#1",
+      "greta-solberg#1",
+      "anton-leclair#0",
+      "greta-solberg#0",
+      "greyfen-materials#1",
+      "hugo-fenwick#0",
+      "hugo-fenwick#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q18",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "calder-optics#0",
+      "mei-aldana#1",
+      "calder-optics#1",
+      "university-of-saltrene#0",
+      "prism-4#0",
+      "saltrene#1",
+      "university-of-saltrene#1",
+      "saltrene#0",
+      "kestrelmoor-polytechnic#1",
+      "greta-solberg#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "prism-4#0",
+      "mei-aldana#1",
+      "calder-optics#1",
+      "calder-optics#0",
+      "halcyon-sensor#1",
+      "mei-aldana#0",
+      "news-glint-milestone#1",
+      "halcyon-sensor#0",
+      "nimbrel-labs#2",
+      "mara-okafor#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "calder-optics#0",
+      "mei-aldana#1",
+      "calder-optics#1",
+      "prism-4#0",
+      "saltrene#0",
+      "nimbrel-labs#0",
+      "jun-takeda#0",
+      "mei-aldana#0",
+      "saltwind-bio#0",
+      "halcyon-sensor#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "calder-optics#0",
+      "mei-aldana#1",
+      "mei-aldana#0",
+      "jun-takeda#0",
+      "quorvale-institute-of-technology#0",
+      "saltrene#0",
+      "jun-takeda#1",
+      "oskar-brandt#0",
+      "saltwind-bio#0",
+      "ravi-castellan#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "calder-optics#0",
+      "mei-aldana#1",
+      "mei-aldana#0",
+      "saltrene#0",
+      "jun-takeda#0",
+      "quorvale-institute-of-technology#0",
+      "oskar-brandt#0",
+      "prism-4#0",
+      "ravi-castellan#0",
+      "calder-optics#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q19",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "pinecrest-bank#0",
+      "lena-morrow#1",
+      "pinecrest-bank#1",
+      "brightwell-cells#0",
+      "news-orrin-fleet-expansion#1",
+      "greta-solberg#1",
+      "delia-marsh#1",
+      "felix-ambrose#1",
+      "oskar-brandt#1",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "lena-morrow#1",
+      "pinecrest-bank#0",
+      "news-orrin-fleet-expansion#1",
+      "pinecrest-bank#1",
+      "lena-morrow#0",
+      "priya-halvorsen#0",
+      "anton-leclair#0",
+      "corallin#1",
+      "delia-marsh#1",
+      "ashgrove-foods#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "lena-morrow#1",
+      "pinecrest-bank#0",
+      "pinecrest-bank#1",
+      "harrowgate-capital#0",
+      "vey-harbour#0",
+      "lena-morrow#0",
+      "priya-halvorsen#0",
+      "orrin-freight#0",
+      "anton-leclair#0",
+      "delia-marsh#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "lena-morrow#1",
+      "pinecrest-bank#0",
+      "lena-morrow#0",
+      "felix-ambrose#0",
+      "mara-okafor#0",
+      "ashgrove-foods#0",
+      "anton-leclair#0",
+      "priya-halvorsen#0",
+      "greyfen-materials#0",
+      "hugo-fenwick#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "lena-morrow#1",
+      "pinecrest-bank#0",
+      "felix-ambrose#0",
+      "lena-morrow#0",
+      "mara-okafor#0",
+      "brightwell-cells#0",
+      "ashgrove-foods#0",
+      "greyfen-materials#0",
+      "anton-leclair#0",
+      "hugo-fenwick#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q20",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "saltwind-bio#0",
+      "priya-halvorsen#1",
+      "saltrene#1",
+      "saltwind-bio#1",
+      "university-of-saltrene#0",
+      "priya-halvorsen#0",
+      "university-of-saltrene#1",
+      "saltrene#0",
+      "tobiah-renn#0",
+      "harrowgate-capital#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "corallin#0",
+      "priya-halvorsen#1",
+      "saltwind-bio#1",
+      "saltwind-bio#0",
+      "lumen-assay#1",
+      "harrowgate-capital#1",
+      "corallin#1",
+      "priya-halvorsen#0",
+      "hugo-fenwick#1",
+      "lumen-assay#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "saltwind-bio#0",
+      "priya-halvorsen#1",
+      "saltwind-bio#1",
+      "priya-halvorsen#0",
+      "saltrene#0",
+      "corallin#0",
+      "lumen-assay#1",
+      "mei-aldana#0",
+      "jun-takeda#0",
+      "nimbrel-labs#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "priya-halvorsen#1",
+      "saltwind-bio#0",
+      "priya-halvorsen#0",
+      "jun-takeda#1",
+      "mei-aldana#0",
+      "jun-takeda#0",
+      "saltwind-bio#1",
+      "corallin#0",
+      "anton-leclair#0",
+      "saltrene#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "priya-halvorsen#1",
+      "saltwind-bio#0",
+      "priya-halvorsen#0",
+      "saltwind-bio#1",
+      "mei-aldana#0",
+      "jun-takeda#1",
+      "jun-takeda#0",
+      "saltrene#0",
+      "corallin#0",
+      "anton-leclair#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q21",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "harrowgate-capital#0",
+      "news-harrowgate-third-fund#1",
+      "oskar-brandt#1",
+      "news-harrowgate-third-fund#0",
+      "harrowgate-capital#1",
+      "corvane-motors#1",
+      "felix-ambrose#1",
+      "greyfen-materials#0",
+      "brightwell-cells#0",
+      "lena-morrow#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "news-harrowgate-third-fund#0",
+      "oskar-brandt#1",
+      "news-harrowgate-third-fund#1",
+      "harrowgate-capital#0",
+      "corvane-motors#1",
+      "saltwind-bio#1",
+      "nimbrel-labs#1",
+      "harrowgate-capital#1",
+      "ilse-varga#1",
+      "wayfarer#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "harrowgate-capital#0",
+      "oskar-brandt#1",
+      "saltwind-bio#1",
+      "corvane-motors#1",
+      "pinecrest-bank#0",
+      "priya-halvorsen#0",
+      "corvane-motors#0",
+      "vey-harbour#0",
+      "priya-halvorsen#1",
+      "lumen-assay#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "harrowgate-capital#0",
+      "oskar-brandt#0",
+      "ravi-castellan#0",
+      "oskar-brandt#1",
+      "quillon-software#0",
+      "anton-leclair#0",
+      "priya-halvorsen#0",
+      "velltrix-systems#0",
+      "saltwind-bio#1",
+      "jun-takeda#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "harrowgate-capital#0",
+      "oskar-brandt#1",
+      "oskar-brandt#0",
+      "ravi-castellan#0",
+      "quillon-software#0",
+      "corvane-motors#1",
+      "velltrix-systems#0",
+      "saltwind-bio#1",
+      "anton-leclair#0",
+      "priya-halvorsen#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q22",
+    "hops": 2,
+    "split": "dev",
+    "vector": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "halcyon-sensor#1",
+      "calder-optics#1",
+      "prism-4#0",
+      "mei-aldana#1",
+      "nimbrel-labs#1",
+      "calder-optics#0",
+      "wayfarer#1",
+      "velltrix-systems#2",
+      "glint-sdk#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "halcyon-sensor#1",
+      "wayfarer#1",
+      "news-glint-milestone#1",
+      "calder-optics#1",
+      "mara-okafor#1",
+      "nimbrel-labs#2",
+      "news-glint-milestone#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "calder-optics#1",
+      "wayfarer#1",
+      "halcyon-sensor#1",
+      "velltrix-systems#0",
+      "velltrix-systems#2",
+      "calder-optics#0",
+      "prism-4#0",
+      "glint-sdk#0",
+      "mei-aldana#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "prism-4#0",
+      "halcyon-sensor#0",
+      "calder-optics#0",
+      "calder-optics#1",
+      "halcyon-sensor#1",
+      "velltrix-systems#2",
+      "velltrix-systems#0",
+      "glint-sdk#0",
+      "nimbrel-labs#0",
+      "wayfarer#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "prism-4#0",
+      "halcyon-sensor#0",
+      "calder-optics#1",
+      "calder-optics#0",
+      "halcyon-sensor#1",
+      "velltrix-systems#2",
+      "glint-sdk#0",
+      "wayfarer#1",
+      "mei-aldana#1",
+      "velltrix-systems#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q23",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "wayfarer#0",
+      "wayfarer#1",
+      "corvane-motors#1",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#0",
+      "news-brightwell-dunmarrow-plant#0",
+      "brightwell-cells#1",
+      "brightwell-cells#0",
+      "ember-9#0",
+      "ostrel-energy#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "wayfarer#0",
+      "wayfarer#1",
+      "corvane-motors#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "ilse-varga#1",
+      "corvane-motors#0",
+      "delia-marsh#1",
+      "oskar-brandt#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#1",
+      "wayfarer#1",
+      "corvane-motors#0",
+      "news-brightwell-dunmarrow-plant#0",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "ember-9#0",
+      "ostrel-energy#1",
+      "news-harrowgate-third-fund#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "corvane-motors#0",
+      "wayfarer#0",
+      "wayfarer#1",
+      "ember-9#0",
+      "brightwell-cells#0",
+      "corvane-motors#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "ashgrove-foods#0",
+      "greyfen-materials#0",
+      "brightwell-cells#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#0",
+      "wayfarer#1",
+      "ember-9#0",
+      "corvane-motors#1",
+      "brightwell-cells#0",
+      "news-brightwell-dunmarrow-plant#0",
+      "brightwell-cells#1",
+      "news-orrin-fleet-expansion#0",
+      "ostrel-energy#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q24",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "stackbot#1",
+      "stackbot#0",
+      "nimbrel-labs#1",
+      "velltrix-systems#2",
+      "mirelle-robotics#1",
+      "glint-sdk#0",
+      "velltrix-systems#0",
+      "quillon-software#1",
+      "sana-idris#1",
+      "nimbrel-labs#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "stackbot#0",
+      "mirelle-robotics#1",
+      "stackbot#1",
+      "sana-idris#1",
+      "mirelle-robotics#0",
+      "glint-sdk#1",
+      "glint-sdk#0",
+      "orrin-freight#0",
+      "nimbrel-labs#1",
+      "delia-marsh#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "stackbot#1",
+      "stackbot#0",
+      "glint-sdk#0",
+      "mirelle-robotics#1",
+      "nimbrel-labs#1",
+      "nimbrel-labs#0",
+      "velltrix-systems#2",
+      "mirelle-robotics#0",
+      "sana-idris#1",
+      "lumen-q3#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "nimbrel-labs#0",
+      "glint-sdk#0",
+      "stackbot#1",
+      "stackbot#0",
+      "velltrix-systems#2",
+      "nimbrel-labs#1",
+      "mirelle-robotics#1",
+      "mirelle-robotics#0",
+      "tobiah-renn#1",
+      "lumen-q3#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "nimbrel-labs#0",
+      "stackbot#1",
+      "glint-sdk#0",
+      "stackbot#0",
+      "velltrix-systems#2",
+      "nimbrel-labs#1",
+      "mirelle-robotics#1",
+      "mirelle-robotics#0",
+      "tobiah-renn#1",
+      "sana-idris#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q25",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "ember-9#1",
+      "ember-9#0",
+      "brightwell-cells#1",
+      "ostrel-energy#1",
+      "greyfen-materials#1",
+      "gridvault#1",
+      "brightwell-cells#0",
+      "ostrel-energy#0",
+      "anton-leclair#1",
+      "greyfen-materials#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "ember-9#0",
+      "gridvault#1",
+      "brightwell-cells#1",
+      "ostrel-energy#1",
+      "ember-9#1",
+      "wayfarer#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "greyfen-materials#1",
+      "gridvault#0",
+      "anton-leclair#1"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "ember-9#1",
+      "ember-9#0",
+      "brightwell-cells#1",
+      "ostrel-energy#1",
+      "wayfarer#1",
+      "gridvault#1",
+      "brightwell-cells#0",
+      "greyfen-materials#0",
+      "greyfen-materials#1",
+      "anton-leclair#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "ember-9#1",
+      "brightwell-cells#1",
+      "ember-9#0",
+      "brightwell-cells#0",
+      "greyfen-materials#0",
+      "ostrel-energy#0",
+      "greyfen-materials#1",
+      "felix-ambrose#1",
+      "kestrelmoor#1",
+      "ravi-castellan#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "ember-9#1",
+      "brightwell-cells#1",
+      "ember-9#0",
+      "brightwell-cells#0",
+      "greyfen-materials#0",
+      "greyfen-materials#1",
+      "ostrel-energy#0",
+      "felix-ambrose#1",
+      "ravi-castellan#1",
+      "anton-leclair#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q26",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "orrin-freight#0",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "pinecrest-bank#1",
+      "news-orrin-fleet-expansion#1",
+      "delia-marsh#1",
+      "corvane-motors#0",
+      "ashgrove-foods#1",
+      "quillon-software#1",
+      "wayfarer#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "delia-marsh#1",
+      "orrin-freight#0",
+      "pinecrest-bank#1",
+      "ashgrove-foods#1",
+      "quillon-software#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#1",
+      "delia-marsh#0",
+      "wayfarer#0"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.0,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "orrin-freight#0",
+      "quillon-software#1",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#0",
+      "pinecrest-bank#1",
+      "ashgrove-foods#1",
+      "delia-marsh#1",
+      "wayfarer#0",
+      "mirelle-robotics#0",
+      "wayfarer#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "orrin-freight#0",
+      "corvane-motors#0",
+      "news-orrin-fleet-expansion#0",
+      "wayfarer#0",
+      "orrin-freight#1",
+      "mirelle-robotics#0",
+      "quillon-software#1",
+      "corvane-motors#1",
+      "stackbot#0",
+      "pinecrest-bank#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "orrin-freight#0",
+      "news-orrin-fleet-expansion#0",
+      "corvane-motors#0",
+      "orrin-freight#1",
+      "wayfarer#0",
+      "quillon-software#1",
+      "pinecrest-bank#1",
+      "corvane-motors#1",
+      "mirelle-robotics#0",
+      "stackbot#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q27",
+    "hops": 2,
+    "split": "dev",
+    "vector": {
+     "ranked": [
+      "nimbrel-labs#2",
+      "nimbrel-labs#0",
+      "velltrix-systems#2",
+      "tobiah-renn#1",
+      "nimbrel-labs#1",
+      "mirelle-robotics#0",
+      "news-harrowgate-third-fund#1",
+      "harrowgate-capital#1",
+      "sana-idris#1",
+      "glint-sdk#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "nimbrel-labs#2",
+      "glint-sdk#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2",
+      "nimbrel-labs#0",
+      "nimbrel-labs#1",
+      "news-harrowgate-third-fund#1",
+      "sana-idris#1",
+      "mirelle-robotics#0",
+      "harrowgate-capital#1"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "velltrix-systems#2",
+      "nimbrel-labs#0",
+      "tobiah-renn#1",
+      "mirelle-robotics#0",
+      "glint-sdk#0",
+      "news-harrowgate-third-fund#1",
+      "nimbrel-labs#1",
+      "sana-idris#1",
+      "velltrix-systems#0",
+      "nimbrel-labs#2"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "velltrix-systems#2",
+      "velltrix-systems#0",
+      "tobiah-renn#1",
+      "quillon-software#0",
+      "nimbrel-labs#2",
+      "mara-okafor#1",
+      "nimbrel-labs#0",
+      "halcyon-sensor#0",
+      "mirelle-robotics#0",
+      "glint-sdk#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "velltrix-systems#2",
+      "tobiah-renn#1",
+      "velltrix-systems#0",
+      "nimbrel-labs#2",
+      "nimbrel-labs#0",
+      "quillon-software#0",
+      "mara-okafor#1",
+      "mirelle-robotics#0",
+      "glint-sdk#0",
+      "halcyon-sensor#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q28",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "pinecrest-bank#1",
+      "news-orrin-fleet-expansion#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#0",
+      "orrin-freight#1",
+      "delia-marsh#1",
+      "lena-morrow#1",
+      "corvane-motors#1",
+      "ashgrove-foods#1",
+      "corvane-motors#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "delia-marsh#1",
+      "orrin-freight#0",
+      "pinecrest-bank#1",
+      "ashgrove-foods#1",
+      "quillon-software#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#1",
+      "delia-marsh#0",
+      "wayfarer#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "pinecrest-bank#1",
+      "quillon-software#1",
+      "delia-marsh#1",
+      "orrin-freight#0",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "pinecrest-bank#0",
+      "lena-morrow#1",
+      "ashgrove-foods#1",
+      "wayfarer#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "pinecrest-bank#0",
+      "pinecrest-bank#1",
+      "vey-harbour#0",
+      "orrin-freight#0",
+      "harrowgate-capital#0",
+      "news-orrin-fleet-expansion#0",
+      "lena-morrow#1",
+      "quillon-software#1",
+      "wayfarer#0",
+      "orrin-freight#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "pinecrest-bank#1",
+      "pinecrest-bank#0",
+      "orrin-freight#0",
+      "news-orrin-fleet-expansion#0",
+      "vey-harbour#0",
+      "lena-morrow#1",
+      "orrin-freight#1",
+      "quillon-software#1",
+      "harrowgate-capital#0",
+      "wayfarer#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q29",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "priya-halvorsen#1",
+      "saltwind-bio#0",
+      "saltwind-bio#1",
+      "harrowgate-capital#1",
+      "tobiah-renn#1",
+      "saltrene#1",
+      "lumen-assay#1",
+      "velltrix-systems#2",
+      "nimbrel-labs#0",
+      "university-of-saltrene#0"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.0,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "corallin#0",
+      "priya-halvorsen#1",
+      "saltwind-bio#1",
+      "saltwind-bio#0",
+      "lumen-assay#1",
+      "harrowgate-capital#1",
+      "corallin#1",
+      "priya-halvorsen#0",
+      "hugo-fenwick#1",
+      "lumen-assay#0"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "saltwind-bio#0",
+      "priya-halvorsen#1",
+      "saltwind-bio#1",
+      "lumen-assay#1",
+      "corallin#0",
+      "nimbrel-labs#0",
+      "calder-optics#0",
+      "mei-aldana#0",
+      "saltrene#0",
+      "priya-halvorsen#0"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 0.5,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "lumen-assay#1",
+      "saltwind-bio#0",
+      "lumen-assay#0",
+      "priya-halvorsen#1",
+      "hugo-fenwick#1",
+      "corallin#1",
+      "harrowgate-capital#0",
+      "calder-optics#0",
+      "corallin#0",
+      "lumen-q3#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "saltwind-bio#0",
+      "lumen-assay#1",
+      "priya-halvorsen#1",
+      "lumen-assay#0",
+      "hugo-fenwick#1",
+      "corallin#1",
+      "saltwind-bio#1",
+      "corallin#0",
+      "calder-optics#0",
+      "nimbrel-labs#0"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q30",
+    "hops": 2,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "corvane-motors#0",
+      "corvane-motors#1",
+      "oskar-brandt#1",
+      "ilse-varga#1",
+      "harrowgate-capital#1",
+      "news-harrowgate-third-fund#1",
+      "wayfarer#0",
+      "harrowgate-capital#0",
+      "velltrix-systems#0",
+      "nimbrel-labs#2"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "ilse-varga#1",
+      "wayfarer#0",
+      "corvane-motors#0",
+      "oskar-brandt#1",
+      "news-harrowgate-third-fund#1",
+      "corvane-motors#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "harrowgate-capital#1",
+      "news-harrowgate-third-fund#0",
+      "harrowgate-capital#0"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "corvane-motors#0",
+      "corvane-motors#1",
+      "news-harrowgate-third-fund#1",
+      "wayfarer#0",
+      "oskar-brandt#1",
+      "harrowgate-capital#0",
+      "ilse-varga#1",
+      "saltwind-bio#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "velltrix-systems#2"
+     ],
+     "recall@3": 0.5,
+     "full@3": 0.0,
+     "recall@5": 0.5,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "harrowgate-capital#0",
+      "corvane-motors#1",
+      "corvane-motors#0",
+      "news-harrowgate-third-fund#1",
+      "wayfarer#0",
+      "pinecrest-bank#0",
+      "saltwind-bio#1",
+      "lumen-assay#0",
+      "ashgrove-foods#0",
+      "vey-harbour#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "corvane-motors#1",
+      "harrowgate-capital#0",
+      "corvane-motors#0",
+      "news-harrowgate-third-fund#1",
+      "wayfarer#0",
+      "oskar-brandt#1",
+      "pinecrest-bank#0",
+      "saltwind-bio#1",
+      "dunmarrow#0",
+      "vey-harbour#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q31",
+    "hops": 3,
+    "split": "dev",
+    "vector": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "halcyon-sensor#1",
+      "university-of-saltrene#1",
+      "dunmarrow#0",
+      "saltrene#1",
+      "wayfarer#1",
+      "velltrix-systems#0",
+      "brightwell-cells#0",
+      "lumen-assay#0",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "halcyon-sensor#1",
+      "wayfarer#1",
+      "news-glint-milestone#1",
+      "calder-optics#1",
+      "mara-okafor#1",
+      "nimbrel-labs#2",
+      "news-glint-milestone#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "velltrix-systems#0",
+      "wayfarer#1",
+      "halcyon-sensor#1",
+      "velltrix-systems#2",
+      "nimbrel-labs#2",
+      "calder-optics#1",
+      "mara-okafor#1",
+      "quorvale#0",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "velltrix-systems#0",
+      "quorvale#0",
+      "quillon-software#0",
+      "mara-okafor#1",
+      "halcyon-sensor#1",
+      "nimbrel-labs#2",
+      "velltrix-systems#2",
+      "oskar-brandt#0",
+      "ravi-castellan#0"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "velltrix-systems#0",
+      "halcyon-sensor#1",
+      "quorvale#0",
+      "mara-okafor#1",
+      "quillon-software#0",
+      "velltrix-systems#2",
+      "nimbrel-labs#2",
+      "tobiah-renn#1",
+      "nimbrel-labs#0"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q32",
+    "hops": 3,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "ember-9#0",
+      "brightwell-cells#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "gridvault#1",
+      "ostrel-energy#1",
+      "ember-9#1",
+      "brightwell-cells#0",
+      "anton-leclair#1",
+      "mara-okafor#1",
+      "greyfen-materials#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "ember-9#0",
+      "gridvault#1",
+      "brightwell-cells#1",
+      "ostrel-energy#1",
+      "ember-9#1",
+      "wayfarer#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "greyfen-materials#1",
+      "gridvault#0",
+      "anton-leclair#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "ember-9#0",
+      "brightwell-cells#1",
+      "ostrel-energy#1",
+      "wayfarer#1",
+      "gridvault#1",
+      "brightwell-cells#0",
+      "ember-9#1",
+      "greyfen-materials#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "greta-solberg#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "ember-9#0",
+      "brightwell-cells#0",
+      "brightwell-cells#1",
+      "ashgrove-foods#0",
+      "kestrelmoor#0",
+      "news-brightwell-dunmarrow-plant#0",
+      "dunmarrow#0",
+      "greyfen-materials#1",
+      "ostrel-energy#0",
+      "ravi-castellan#1"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "ember-9#0",
+      "brightwell-cells#1",
+      "brightwell-cells#0",
+      "news-brightwell-dunmarrow-plant#0",
+      "ashgrove-foods#0",
+      "kestrelmoor#0",
+      "dunmarrow#0",
+      "ostrel-energy#1",
+      "greyfen-materials#1",
+      "ostrel-energy#0"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q33",
+    "hops": 3,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#1",
+      "wayfarer#1",
+      "orrin-freight#1",
+      "university-of-saltrene#1",
+      "saltrene#1",
+      "news-orrin-fleet-expansion#0",
+      "quorvale-institute-of-technology#1",
+      "felix-ambrose#1",
+      "velltrix-systems#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "wayfarer#0",
+      "wayfarer#1",
+      "corvane-motors#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "ilse-varga#1",
+      "corvane-motors#0",
+      "delia-marsh#1",
+      "oskar-brandt#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#1",
+      "wayfarer#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "corvane-motors#0",
+      "news-harrowgate-third-fund#1",
+      "oskar-brandt#1",
+      "ilse-varga#1",
+      "orrin-freight#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#0",
+      "corvane-motors#1",
+      "ashgrove-foods#0",
+      "greyfen-materials#0",
+      "harrowgate-capital#0",
+      "felix-ambrose#0",
+      "lena-morrow#0",
+      "oskar-brandt#1",
+      "ilse-varga#0"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#1",
+      "corvane-motors#0",
+      "greyfen-materials#0",
+      "ashgrove-foods#0",
+      "felix-ambrose#0",
+      "harrowgate-capital#0",
+      "oskar-brandt#1",
+      "ilse-varga#0",
+      "wayfarer#1"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q34",
+    "hops": 3,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "gridvault#0",
+      "ostrel-energy#1",
+      "gridvault#1",
+      "greta-solberg#1",
+      "mara-okafor#1",
+      "tobiah-renn#1",
+      "harrowgate-capital#1",
+      "oskar-brandt#1",
+      "ostrel-energy#0",
+      "priya-halvorsen#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "gridvault#0",
+      "gridvault#1",
+      "ostrel-energy#1",
+      "ember-9#0",
+      "ravi-castellan#1",
+      "ostrel-energy#0",
+      "brightwell-cells#1",
+      "ember-9#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "wayfarer#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "gridvault#0",
+      "ostrel-energy#1",
+      "gridvault#1",
+      "ostrel-energy#0",
+      "ravi-castellan#1",
+      "ember-9#0",
+      "brightwell-cells#0",
+      "brightwell-cells#1",
+      "ilse-varga#0",
+      "greta-solberg#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "gridvault#0",
+      "ravi-castellan#1",
+      "ostrel-energy#0",
+      "ostrel-energy#1",
+      "brightwell-cells#0",
+      "ravi-castellan#0",
+      "greta-solberg#0",
+      "hugo-fenwick#0",
+      "ilse-varga#0",
+      "kestrelmoor#0"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "gridvault#0",
+      "ostrel-energy#1",
+      "ravi-castellan#1",
+      "ostrel-energy#0",
+      "brightwell-cells#0",
+      "gridvault#1",
+      "greta-solberg#1",
+      "ravi-castellan#0",
+      "greta-solberg#0",
+      "hugo-fenwick#0"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q35",
+    "hops": 3,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "mirelle-robotics#1",
+      "tidemark-ports#0",
+      "tidemark-ports#1",
+      "delia-marsh#1",
+      "orrin-freight#0",
+      "marrowick#0",
+      "mirelle-robotics#0",
+      "quorvale#1",
+      "stackbot#0",
+      "marrowick#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "delia-marsh#1",
+      "orrin-freight#0",
+      "tidemark-ports#0",
+      "mirelle-robotics#1",
+      "pinecrest-bank#1",
+      "marrowick#0",
+      "delia-marsh#0",
+      "news-orrin-fleet-expansion#1",
+      "stackbot#0",
+      "stackbot#1"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "mirelle-robotics#1",
+      "stackbot#0",
+      "delia-marsh#1",
+      "orrin-freight#0",
+      "tidemark-ports#0",
+      "mirelle-robotics#0",
+      "stackbot#1",
+      "sana-idris#1",
+      "quillon-software#1",
+      "delia-marsh#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "stackbot#0",
+      "mirelle-robotics#1",
+      "mirelle-robotics#0",
+      "delia-marsh#1",
+      "tidemark-ports#0",
+      "orrin-freight#0",
+      "stackbot#1",
+      "sana-idris#1",
+      "delia-marsh#0",
+      "glint-sdk#0"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "hybrid": {
+     "ranked": [
+      "mirelle-robotics#1",
+      "stackbot#0",
+      "mirelle-robotics#0",
+      "delia-marsh#1",
+      "tidemark-ports#0",
+      "orrin-freight#0",
+      "marrowick#0",
+      "sana-idris#1",
+      "stackbot#1",
+      "saltrene#0"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q36",
+    "hops": 3,
+    "split": "dev",
+    "vector": {
+     "ranked": [
+      "halcyon-sensor#1",
+      "halcyon-sensor#0",
+      "calder-optics#1",
+      "prism-4#0",
+      "mei-aldana#1",
+      "calder-optics#0",
+      "nimbrel-labs#1",
+      "velltrix-systems#2",
+      "wayfarer#1",
+      "mara-okafor#1"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "halcyon-sensor#1",
+      "wayfarer#1",
+      "news-glint-milestone#1",
+      "calder-optics#1",
+      "mara-okafor#1",
+      "nimbrel-labs#2",
+      "news-glint-milestone#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "halcyon-sensor#0",
+      "calder-optics#1",
+      "halcyon-sensor#1",
+      "wayfarer#1",
+      "velltrix-systems#0",
+      "calder-optics#0",
+      "velltrix-systems#2",
+      "prism-4#0",
+      "mei-aldana#1",
+      "mara-okafor#1"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "prism-4#0",
+      "calder-optics#0",
+      "calder-optics#1",
+      "halcyon-sensor#0",
+      "halcyon-sensor#1",
+      "velltrix-systems#0",
+      "velltrix-systems#2",
+      "mei-aldana#1",
+      "mara-okafor#1",
+      "glint-sdk#0"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "prism-4#0",
+      "calder-optics#0",
+      "calder-optics#1",
+      "halcyon-sensor#0",
+      "halcyon-sensor#1",
+      "mei-aldana#1",
+      "velltrix-systems#2",
+      "velltrix-systems#0",
+      "mara-okafor#1",
+      "glint-sdk#0"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q37",
+    "hops": 3,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "lumen-q3#1",
+      "lumen-q3#0",
+      "lumen-assay#1",
+      "lumen-assay#0",
+      "hugo-fenwick#1",
+      "nimbrel-labs#1",
+      "velltrix-systems#2",
+      "velltrix-systems#0",
+      "calder-optics#1",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "lumen-q3#0",
+      "lumen-q3#1",
+      "lumen-assay#1",
+      "hugo-fenwick#1",
+      "lumen-assay#0",
+      "glint-sdk#1",
+      "glint-sdk#0",
+      "stackbot#1",
+      "news-glint-milestone#0",
+      "nimbrel-labs#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "lumen-q3#0",
+      "lumen-assay#1",
+      "lumen-assay#0",
+      "lumen-q3#1",
+      "hugo-fenwick#1",
+      "glint-sdk#0",
+      "nimbrel-labs#1",
+      "harrowgate-capital#0",
+      "vey-harbour#0",
+      "stackbot#1"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "lumen-q3#0",
+      "lumen-q3#1",
+      "lumen-assay#0",
+      "glint-sdk#0",
+      "lumen-assay#1",
+      "nimbrel-labs#0",
+      "nimbrel-labs#1",
+      "velltrix-systems#2",
+      "harrowgate-capital#0",
+      "pinecrest-bank#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "lumen-q3#0",
+      "lumen-q3#1",
+      "lumen-assay#0",
+      "lumen-assay#1",
+      "glint-sdk#0",
+      "nimbrel-labs#1",
+      "velltrix-systems#2",
+      "nimbrel-labs#0",
+      "hugo-fenwick#1",
+      "tobiah-renn#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q38",
+    "hops": 3,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "nimbrel-labs#0",
+      "nimbrel-labs#2",
+      "tobiah-renn#1",
+      "velltrix-systems#2",
+      "nimbrel-labs#1",
+      "mirelle-robotics#0",
+      "sana-idris#1",
+      "harrowgate-capital#1",
+      "news-harrowgate-third-fund#1",
+      "jun-takeda#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "nimbrel-labs#2",
+      "glint-sdk#0",
+      "tobiah-renn#1",
+      "velltrix-systems#2",
+      "nimbrel-labs#0",
+      "nimbrel-labs#1",
+      "news-harrowgate-third-fund#1",
+      "sana-idris#1",
+      "mirelle-robotics#0",
+      "harrowgate-capital#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "velltrix-systems#2",
+      "tobiah-renn#1",
+      "nimbrel-labs#0",
+      "mirelle-robotics#0",
+      "glint-sdk#0",
+      "news-harrowgate-third-fund#1",
+      "sana-idris#1",
+      "nimbrel-labs#1",
+      "velltrix-systems#0",
+      "nimbrel-labs#2"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "velltrix-systems#2",
+      "tobiah-renn#1",
+      "tobiah-renn#0",
+      "nimbrel-labs#0",
+      "nimbrel-labs#2",
+      "mara-okafor#1",
+      "mirelle-robotics#0",
+      "velltrix-systems#0",
+      "delia-marsh#0",
+      "glint-sdk#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "hybrid": {
+     "ranked": [
+      "velltrix-systems#2",
+      "tobiah-renn#1",
+      "nimbrel-labs#0",
+      "nimbrel-labs#2",
+      "mirelle-robotics#0",
+      "mara-okafor#1",
+      "tobiah-renn#0",
+      "velltrix-systems#0",
+      "glint-sdk#0",
+      "news-harrowgate-third-fund#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    }
+   },
+   {
+    "id": "q39",
+    "hops": 3,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "gridvault#0",
+      "gridvault#1",
+      "ostrel-energy#1",
+      "brightwell-cells#0",
+      "news-brightwell-dunmarrow-plant#0",
+      "greta-solberg#1",
+      "ostrel-energy#0",
+      "brightwell-cells#1",
+      "saltrene#1",
+      "ravi-castellan#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "gridvault#0",
+      "gridvault#1",
+      "ostrel-energy#1",
+      "ember-9#0",
+      "ravi-castellan#1",
+      "ostrel-energy#0",
+      "brightwell-cells#1",
+      "ember-9#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "wayfarer#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "gridvault#0",
+      "ostrel-energy#1",
+      "gridvault#1",
+      "ostrel-energy#0",
+      "ember-9#0",
+      "brightwell-cells#0",
+      "brightwell-cells#1",
+      "greyfen-materials#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "wayfarer#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "graph": {
+     "ranked": [
+      "gridvault#0",
+      "brightwell-cells#0",
+      "ostrel-energy#0",
+      "ostrel-energy#1",
+      "ember-9#0",
+      "brightwell-cells#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "ravi-castellan#1",
+      "gridvault#1",
+      "kestrelmoor#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "gridvault#0",
+      "brightwell-cells#0",
+      "ostrel-energy#1",
+      "ostrel-energy#0",
+      "ember-9#0",
+      "news-brightwell-dunmarrow-plant#0",
+      "brightwell-cells#1",
+      "gridvault#1",
+      "ravi-castellan#1",
+      "greyfen-materials#1"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q40",
+    "hops": 3,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "wayfarer#1",
+      "wayfarer#0",
+      "brightwell-cells#1",
+      "greyfen-materials#1",
+      "brightwell-cells#0",
+      "ostrel-energy#0",
+      "corvane-motors#1",
+      "ostrel-energy#1",
+      "ravi-castellan#1",
+      "news-orrin-fleet-expansion#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "wayfarer#0",
+      "wayfarer#1",
+      "corvane-motors#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "news-brightwell-dunmarrow-plant#0",
+      "ilse-varga#1",
+      "corvane-motors#0",
+      "delia-marsh#1",
+      "oskar-brandt#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "wayfarer#0",
+      "corvane-motors#1",
+      "wayfarer#1",
+      "orrin-freight#1",
+      "corvane-motors#0",
+      "news-orrin-fleet-expansion#0",
+      "ember-9#0",
+      "halcyon-sensor#0",
+      "brightwell-cells#0",
+      "brightwell-cells#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "wayfarer#0",
+      "brightwell-cells#1",
+      "brightwell-cells#0",
+      "ember-9#0",
+      "wayfarer#1",
+      "ember-9#1",
+      "corvane-motors#0",
+      "corvane-motors#1",
+      "greyfen-materials#0",
+      "greyfen-materials#1"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "wayfarer#0",
+      "brightwell-cells#1",
+      "brightwell-cells#0",
+      "wayfarer#1",
+      "ember-9#0",
+      "ember-9#1",
+      "corvane-motors#1",
+      "greyfen-materials#1",
+      "ravi-castellan#1",
+      "corvane-motors#0"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    }
+   },
+   {
+    "id": "q41",
+    "hops": 3,
+    "split": "dev",
+    "vector": {
+     "ranked": [
+      "lumen-assay#0",
+      "hugo-fenwick#1",
+      "lumen-assay#1",
+      "lumen-q3#0",
+      "lumen-q3#1",
+      "quorvale#0",
+      "mara-okafor#1",
+      "saltrene#0",
+      "dunmarrow#0",
+      "velltrix-systems#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "lumen-q3#0",
+      "hugo-fenwick#1",
+      "lumen-assay#0",
+      "lumen-assay#1",
+      "lumen-q3#1",
+      "hugo-fenwick#0",
+      "corallin#1",
+      "corallin#0",
+      "saltwind-bio#1",
+      "priya-halvorsen#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "lumen-assay#0",
+      "hugo-fenwick#1",
+      "lumen-q3#0",
+      "lumen-assay#1",
+      "harrowgate-capital#0",
+      "corallin#1",
+      "pinecrest-bank#0",
+      "anton-leclair#0",
+      "vey-harbour#0",
+      "hugo-fenwick#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "hugo-fenwick#1",
+      "hugo-fenwick#0",
+      "kestrelmoor#0",
+      "greta-solberg#0",
+      "ilse-varga#0",
+      "lumen-assay#0",
+      "brightwell-cells#0",
+      "anton-leclair#0",
+      "priya-halvorsen#0",
+      "lena-morrow#1"
+     ],
+     "recall@3": 1.0,
+     "full@3": 1.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    },
+    "hybrid": {
+     "ranked": [
+      "hugo-fenwick#1",
+      "hugo-fenwick#0",
+      "lumen-assay#0",
+      "kestrelmoor#0",
+      "brightwell-cells#0",
+      "greta-solberg#0",
+      "ilse-varga#0",
+      "anton-leclair#0",
+      "saltrene#0",
+      "lumen-q3#0"
+     ],
+     "recall@3": 0.6666666666666666,
+     "full@3": 0.0,
+     "recall@5": 1.0,
+     "full@5": 1.0,
+     "recall@10": 1.0,
+     "full@10": 1.0
+    }
+   },
+   {
+    "id": "q42",
+    "hops": 3,
+    "split": "test",
+    "vector": {
+     "ranked": [
+      "orrin-freight#0",
+      "pinecrest-bank#1",
+      "delia-marsh#1",
+      "news-orrin-fleet-expansion#1",
+      "lena-morrow#1",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#0",
+      "pinecrest-bank#0",
+      "harrowgate-capital#1",
+      "ashgrove-foods#1"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.6666666666666666,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph-ppr": {
+     "ranked": [
+      "delia-marsh#1",
+      "orrin-freight#0",
+      "pinecrest-bank#1",
+      "ashgrove-foods#1",
+      "quillon-software#1",
+      "news-orrin-fleet-expansion#0",
+      "orrin-freight#1",
+      "news-orrin-fleet-expansion#1",
+      "delia-marsh#0",
+      "wayfarer#0"
+     ],
+     "recall@3": 0.3333333333333333,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    },
+    "graph-unmasked": {
+     "ranked": [
+      "quillon-software#1",
+      "orrin-freight#0",
+      "delia-marsh#1",
+      "pinecrest-bank#1",
+      "ashgrove-foods#1",
+      "lena-morrow#1",
+      "pinecrest-bank#0",
+      "orrin-freight#1",
+      "delia-marsh#0",
+      "news-orrin-fleet-expansion#0"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.3333333333333333,
+     "full@5": 0.0,
+     "recall@10": 0.6666666666666666,
+     "full@10": 0.0
+    },
+    "graph": {
+     "ranked": [
+      "orrin-freight#0",
+      "quillon-software#1",
+      "delia-marsh#1",
+      "jun-takeda#1",
+      "delia-marsh#0",
+      "quillon-software#0",
+      "tobiah-renn#0",
+      "sana-idris#0",
+      "jun-takeda#0",
+      "ashgrove-foods#1"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.0,
+     "full@5": 0.0,
+     "recall@10": 0.0,
+     "full@10": 0.0
+    },
+    "hybrid": {
+     "ranked": [
+      "orrin-freight#0",
+      "delia-marsh#1",
+      "quillon-software#1",
+      "delia-marsh#0",
+      "jun-takeda#1",
+      "tobiah-renn#0",
+      "ashgrove-foods#1",
+      "pinecrest-bank#1",
+      "quillon-software#0",
+      "sana-idris#0"
+     ],
+     "recall@3": 0.0,
+     "full@3": 0.0,
+     "recall@5": 0.0,
+     "full@5": 0.0,
+     "recall@10": 0.3333333333333333,
+     "full@10": 0.0
+    }
+   }
+  ]
+ },
+ "extraction": {
+  "development": {
+   "documents": 14,
+   "gold_entities": 70,
+   "gold_relations": 56,
+   "entities": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 70,
+    "fp": 0,
+    "fn": 0
+   },
+   "entities_typed": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 70,
+    "fp": 0,
+    "fn": 0
+   },
+   "relations_typed": {
+    "precision": 0.9592,
+    "recall": 0.8393,
+    "f1": 0.8952,
+    "tp": 47,
+    "fp": 2,
+    "fn": 9
+   },
+   "relations_untyped": {
+    "precision": 1.0,
+    "recall": 0.902,
+    "f1": 0.9485,
+    "tp": 46,
+    "fp": 0,
+    "fn": 5
+   },
+   "cooccurrence_precision": 0.1667,
+   "cooccurrence_edges": 12,
+   "connectivity_recall": 0.9216,
+   "pattern_precision": {
+    "appos": {
+     "correct": 2,
+     "total": 2,
+     "precision": 1.0
+    },
+    "copula": {
+     "correct": 8,
+     "total": 8,
+     "precision": 1.0
+    },
+    "passive": {
+     "correct": 14,
+     "total": 14,
+     "precision": 1.0
+    },
+    "prep": {
+     "correct": 8,
+     "total": 8,
+     "precision": 1.0
+    },
+    "svo": {
+     "correct": 15,
+     "total": 17,
+     "precision": 0.8824
+    }
+   },
+   "per_document": {
+    "velltrix-systems": {
+     "gold_relations": 5,
+     "predicted_relations": 5,
+     "correct_relations": 5
+    },
+    "nimbrel-labs": {
+     "gold_relations": 6,
+     "predicted_relations": 4,
+     "correct_relations": 4
+    },
+    "corvane-motors": {
+     "gold_relations": 5,
+     "predicted_relations": 4,
+     "correct_relations": 4
+    },
+    "brightwell-cells": {
+     "gold_relations": 6,
+     "predicted_relations": 5,
+     "correct_relations": 5
+    },
+    "orrin-freight": {
+     "gold_relations": 6,
+     "predicted_relations": 5,
+     "correct_relations": 5
+    },
+    "quillon-software": {
+     "gold_relations": 5,
+     "predicted_relations": 5,
+     "correct_relations": 5
+    },
+    "mara-okafor": {
+     "gold_relations": 4,
+     "predicted_relations": 3,
+     "correct_relations": 3
+    },
+    "delia-marsh": {
+     "gold_relations": 4,
+     "predicted_relations": 4,
+     "correct_relations": 4
+    },
+    "halcyon-sensor": {
+     "gold_relations": 2,
+     "predicted_relations": 3,
+     "correct_relations": 2
+    },
+    "wayfarer": {
+     "gold_relations": 3,
+     "predicted_relations": 3,
+     "correct_relations": 3
+    },
+    "ember-9": {
+     "gold_relations": 3,
+     "predicted_relations": 3,
+     "correct_relations": 3
+    },
+    "quorvale": {
+     "gold_relations": 2,
+     "predicted_relations": 2,
+     "correct_relations": 2
+    },
+    "kestrelmoor-polytechnic": {
+     "gold_relations": 3,
+     "predicted_relations": 2,
+     "correct_relations": 2
+    },
+    "news-orrin-fleet-expansion": {
+     "gold_relations": 2,
+     "predicted_relations": 1,
+     "correct_relations": 0
+    }
+   }
+  },
+  "heldout": {
+   "documents": 8,
+   "gold_entities": 39,
+   "gold_relations": 31,
+   "entities": {
+    "precision": 0.8125,
+    "recall": 1.0,
+    "f1": 0.8966,
+    "tp": 39,
+    "fp": 9,
+    "fn": 0
+   },
+   "entities_typed": {
+    "precision": 0.625,
+    "recall": 0.7692,
+    "f1": 0.6897,
+    "tp": 30,
+    "fp": 18,
+    "fn": 9
+   },
+   "relations_typed": {
+    "precision": 0.6667,
+    "recall": 0.5161,
+    "f1": 0.5818,
+    "tp": 16,
+    "fp": 8,
+    "fn": 15
+   },
+   "relations_untyped": {
+    "precision": 0.75,
+    "recall": 0.5806,
+    "f1": 0.6545,
+    "tp": 18,
+    "fp": 6,
+    "fn": 13
+   },
+   "cooccurrence_precision": 0.1,
+   "cooccurrence_edges": 20,
+   "connectivity_recall": 0.6452,
+   "pattern_precision": {
+    "appos": {
+     "correct": 2,
+     "total": 3,
+     "precision": 0.6667
+    },
+    "copula": {
+     "correct": 4,
+     "total": 4,
+     "precision": 1.0
+    },
+    "passive": {
+     "correct": 3,
+     "total": 4,
+     "precision": 0.75
+    },
+    "prep": {
+     "correct": 5,
+     "total": 9,
+     "precision": 0.5556
+    },
+    "svo": {
+     "correct": 2,
+     "total": 4,
+     "precision": 0.5
+    }
+   },
+   "per_document": {
+    "tessaly-grid": {
+     "gold_relations": 5,
+     "predicted_relations": 4,
+     "correct_relations": 2
+    },
+    "ada-ruskin": {
+     "gold_relations": 5,
+     "predicted_relations": 4,
+     "correct_relations": 2
+    },
+    "kelvane-aero": {
+     "gold_relations": 5,
+     "predicted_relations": 2,
+     "correct_relations": 0
+    },
+    "brask": {
+     "gold_relations": 2,
+     "predicted_relations": 1,
+     "correct_relations": 1
+    },
+    "news-kelvane-funding": {
+     "gold_relations": 3,
+     "predicted_relations": 2,
+     "correct_relations": 1
+    },
+    "halden-university": {
+     "gold_relations": 3,
+     "predicted_relations": 3,
+     "correct_relations": 2
+    },
+    "pellow-motion": {
+     "gold_relations": 4,
+     "predicted_relations": 4,
+     "correct_relations": 4
+    },
+    "imre-toth": {
+     "gold_relations": 4,
+     "predicted_relations": 4,
+     "correct_relations": 4
+    }
+   }
+  }
+ }
+}

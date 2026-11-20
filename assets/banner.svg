@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-labelledby="t d">
+  <title id="t">GraphRAG Pipeline</title>
+  <desc id="d">Turn documents into a knowledge graph, then answer multi-hop questions.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#134E4A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.18" r="0.65">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.3" fill="#fff" fill-opacity="0.11"/>
+    </pattern>
+    <clipPath id="frame"><rect width="1280" height="340" rx="28"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="1280" height="340" fill="url(#bg)"/>
+    <rect width="1280" height="340" fill="url(#dots)"/>
+    <rect width="1280" height="340" fill="url(#glow)"/>
+    <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+      <rect x='900' y='86' width='86' height='112' rx='10' stroke-width='3.5' stroke-opacity='0.85'/><rect x='916' y='70' width='86' height='112' rx='10' fill='#fff' fill-opacity='0.06' stroke-width='3' stroke-opacity='0.45'/><g stroke-width='4' stroke-opacity='0.55'><line x1='916' y1='116' x2='968' y2='116'/><line x1='916' y1='136' x2='958' y2='136'/><line x1='916' y1='156' x2='970' y2='156'/><line x1='916' y1='176' x2='948' y2='176'/></g><path d='M994 142 C 1012 142, 1018 128, 1036 124' stroke-width='3' stroke-opacity='0.5' stroke-dasharray='6 7'/><g stroke-opacity='0.35' stroke-width='2.5'><line x1='1050' y1='120' x2='1112' y2='76'/><line x1='1050' y1='120' x2='1066' y2='204'/><line x1='1112' y1='76' x2='1186' y2='96'/><line x1='1066' y1='204' x2='1140' y2='238'/><line x1='1186' y1='96' x2='1226' y2='168'/><line x1='1140' y1='238' x2='1226' y2='168'/><line x1='1066' y1='204' x2='1128' y2='150'/><line x1='1186' y1='96' x2='1128' y2='150'/><line x1='1140' y1='238' x2='1090' y2='282'/><line x1='1226' y1='168' x2='1232' y2='262'/></g><g stroke-width='6' stroke-opacity='0.95'><line x1='1050' y1='120' x2='1128' y2='150'/><line x1='1128' y1='150' x2='1226' y2='168'/><line x1='1226' y1='168' x2='1232' y2='262'/></g><g fill='#fff' stroke='none'><circle cx='1050' cy='120' r='12'/><circle cx='1128' cy='150' r='11'/><circle cx='1226' cy='168' r='11'/><circle cx='1232' cy='262' r='13'/></g><g fill='#fff' stroke='none' fill-opacity='0.55'><circle cx='1112' cy='76' r='8'/><circle cx='1066' cy='204' r='8'/><circle cx='1186' cy='96' r='7'/><circle cx='1140' cy='238' r='8'/><circle cx='1090' cy='282' r='6'/></g><circle cx='1232' cy='262' r='22' stroke-width='3' stroke-opacity='0.6'/>
+    </g>
+  </g>
+  <text x="64" y="138" font-family="'Segoe UI', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="66" font-weight="800" fill="#fff" letter-spacing="-1.5">GraphRAG Pipeline</text>
+  <text x="66" y="188" font-family="'Segoe UI', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="23" fill="#fff" fill-opacity="0.9">Turn documents into a knowledge graph, then answer multi-hop questions.</text>
+  <rect x="66" y="236" width="173" height="34" rx="17" fill="#fff" fill-opacity="0.14" stroke="#fff" stroke-opacity="0.28"/><text x="152" y="258.5" text-anchor="middle" font-family="'Segoe UI', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#fff">Entity extraction</text>
+  <rect x="249" y="236" width="173" height="34" rx="17" fill="#fff" fill-opacity="0.14" stroke="#fff" stroke-opacity="0.28"/><text x="335" y="258.5" text-anchor="middle" font-family="'Segoe UI', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#fff">Entity resolution</text>
+  <rect x="432" y="236" width="164" height="34" rx="17" fill="#fff" fill-opacity="0.14" stroke="#fff" stroke-opacity="0.28"/><text x="514" y="258.5" text-anchor="middle" font-family="'Segoe UI', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#fff">Multi-hop search</text>
+  <rect x="606" y="236" width="190" height="34" rx="17" fill="#fff" fill-opacity="0.14" stroke="#fff" stroke-opacity="0.28"/><text x="701" y="258.5" text-anchor="middle" font-family="'Segoe UI', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#fff">Louvain communities</text>
+  <rect x="806" y="236" width="139" height="34" rx="17" fill="#fff" fill-opacity="0.14" stroke="#fff" stroke-opacity="0.28"/><text x="875" y="258.5" text-anchor="middle" font-family="'Segoe UI', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#fff">Offline-first</text>
+</svg>

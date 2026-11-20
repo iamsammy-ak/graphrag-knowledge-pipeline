@@ -1,0 +1,745 @@
+{
+ "description": "Hand-labelled entities and relations for 14 documents of the sample corpus. Relations use the canonical vocabulary and include only facts the text states (pronouns resolved by the annotator).",
+ "documents": {
+  "velltrix-systems": {
+   "entities": [
+    {
+     "name": "Velltrix Systems",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "Velltrix"
+     ]
+    },
+    {
+     "name": "Quorvale",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Mara Okafor",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Quorvale Institute of Technology",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "QIT"
+     ]
+    },
+    {
+     "name": "Nimbrel Labs",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Tobiah Renn",
+     "type": "PERSON",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Velltrix Systems",
+     "LOCATED_IN",
+     "Quorvale"
+    ],
+    [
+     "Mara Okafor",
+     "FOUNDED",
+     "Velltrix Systems"
+    ],
+    [
+     "Mara Okafor",
+     "LEADS",
+     "Velltrix Systems"
+    ],
+    [
+     "Velltrix Systems",
+     "ACQUIRED",
+     "Nimbrel Labs"
+    ],
+    [
+     "Tobiah Renn",
+     "WORKS_FOR",
+     "Velltrix Systems"
+    ]
+   ]
+  },
+  "nimbrel-labs": {
+   "entities": [
+    {
+     "name": "Nimbrel Labs",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Saltrene",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Tobiah Renn",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Glint SDK",
+     "type": "PRODUCT",
+     "aliases": []
+    },
+    {
+     "name": "Harrowgate Capital",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Velltrix Systems",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "Velltrix"
+     ]
+    }
+   ],
+   "relations": [
+    [
+     "Nimbrel Labs",
+     "LOCATED_IN",
+     "Saltrene"
+    ],
+    [
+     "Tobiah Renn",
+     "FOUNDED",
+     "Nimbrel Labs"
+    ],
+    [
+     "Nimbrel Labs",
+     "MAKES",
+     "Glint SDK"
+    ],
+    [
+     "Harrowgate Capital",
+     "INVESTED_IN",
+     "Nimbrel Labs"
+    ],
+    [
+     "Nimbrel Labs",
+     "SUBSIDIARY_OF",
+     "Velltrix Systems"
+    ],
+    [
+     "Velltrix Systems",
+     "ACQUIRED",
+     "Nimbrel Labs"
+    ]
+   ]
+  },
+  "corvane-motors": {
+   "entities": [
+    {
+     "name": "Corvane Motors",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "Corvane"
+     ]
+    },
+    {
+     "name": "Dunmarrow",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Ilse Varga",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Wayfarer",
+     "type": "PRODUCT",
+     "aliases": []
+    },
+    {
+     "name": "Harrowgate Capital",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Oskar Brandt",
+     "type": "PERSON",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Corvane Motors",
+     "LOCATED_IN",
+     "Dunmarrow"
+    ],
+    [
+     "Ilse Varga",
+     "FOUNDED",
+     "Corvane Motors"
+    ],
+    [
+     "Corvane Motors",
+     "MAKES",
+     "Wayfarer"
+    ],
+    [
+     "Harrowgate Capital",
+     "INVESTED_IN",
+     "Corvane Motors"
+    ],
+    [
+     "Oskar Brandt",
+     "WORKS_FOR",
+     "Corvane Motors"
+    ]
+   ]
+  },
+  "brightwell-cells": {
+   "entities": [
+    {
+     "name": "Brightwell Cells",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "Brightwell"
+     ]
+    },
+    {
+     "name": "Kestrelmoor",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Anton Leclair",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Greta Solberg",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Ember-9",
+     "type": "PRODUCT",
+     "aliases": []
+    },
+    {
+     "name": "Greyfen Materials",
+     "type": "ORGANIZATION",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Brightwell Cells",
+     "LOCATED_IN",
+     "Kestrelmoor"
+    ],
+    [
+     "Anton Leclair",
+     "LEADS",
+     "Brightwell Cells"
+    ],
+    [
+     "Greta Solberg",
+     "FOUNDED",
+     "Brightwell Cells"
+    ],
+    [
+     "Greta Solberg",
+     "WORKS_FOR",
+     "Brightwell Cells"
+    ],
+    [
+     "Brightwell Cells",
+     "MAKES",
+     "Ember-9"
+    ],
+    [
+     "Greyfen Materials",
+     "SUPPLIES",
+     "Brightwell Cells"
+    ]
+   ]
+  },
+  "orrin-freight": {
+   "entities": [
+    {
+     "name": "Orrin Freight",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Marrowick",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Delia Marsh",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Tidemark Ports",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Wayfarer",
+     "type": "PRODUCT",
+     "aliases": []
+    },
+    {
+     "name": "Dunmarrow",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Atlas Route",
+     "type": "PRODUCT",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Orrin Freight",
+     "LOCATED_IN",
+     "Marrowick"
+    ],
+    [
+     "Delia Marsh",
+     "LEADS",
+     "Orrin Freight"
+    ],
+    [
+     "Delia Marsh",
+     "WORKS_FOR",
+     "Orrin Freight"
+    ],
+    [
+     "Delia Marsh",
+     "WORKS_FOR",
+     "Tidemark Ports"
+    ],
+    [
+     "Orrin Freight",
+     "USES",
+     "Wayfarer"
+    ],
+    [
+     "Orrin Freight",
+     "USES",
+     "Atlas Route"
+    ]
+   ]
+  },
+  "quillon-software": {
+   "entities": [
+    {
+     "name": "Quillon Software",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "Quillon"
+     ]
+    },
+    {
+     "name": "Quorvale",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Jun Takeda",
+     "type": "PERSON",
+     "aliases": []
+    },
+    {
+     "name": "Quorvale Institute of Technology",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "QIT"
+     ]
+    },
+    {
+     "name": "Atlas Route",
+     "type": "PRODUCT",
+     "aliases": []
+    },
+    {
+     "name": "Orrin Freight",
+     "type": "ORGANIZATION",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Quillon Software",
+     "LOCATED_IN",
+     "Quorvale"
+    ],
+    [
+     "Jun Takeda",
+     "FOUNDED",
+     "Quillon Software"
+    ],
+    [
+     "Jun Takeda",
+     "STUDIED_AT",
+     "Quorvale Institute of Technology"
+    ],
+    [
+     "Quillon Software",
+     "MAKES",
+     "Atlas Route"
+    ],
+    [
+     "Quillon Software",
+     "SUPPLIES",
+     "Orrin Freight"
+    ]
+   ]
+  },
+  "mara-okafor": {
+   "entities": [
+    {
+     "name": "Mara Okafor",
+     "type": "PERSON",
+     "aliases": [
+      "Okafor"
+     ]
+    },
+    {
+     "name": "Dunmarrow",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Quorvale Institute of Technology",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "QIT"
+     ]
+    },
+    {
+     "name": "Velltrix Systems",
+     "type": "ORGANIZATION",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Mara Okafor",
+     "BORN_IN",
+     "Dunmarrow"
+    ],
+    [
+     "Mara Okafor",
+     "STUDIED_AT",
+     "Quorvale Institute of Technology"
+    ],
+    [
+     "Mara Okafor",
+     "WORKS_FOR",
+     "Quorvale Institute of Technology"
+    ],
+    [
+     "Mara Okafor",
+     "LEADS",
+     "Velltrix Systems"
+    ]
+   ]
+  },
+  "delia-marsh": {
+   "entities": [
+    {
+     "name": "Delia Marsh",
+     "type": "PERSON",
+     "aliases": [
+      "Marsh"
+     ]
+    },
+    {
+     "name": "Marrowick",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "University of Saltrene",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Tidemark Ports",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Orrin Freight",
+     "type": "ORGANIZATION",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Delia Marsh",
+     "BORN_IN",
+     "Marrowick"
+    ],
+    [
+     "Delia Marsh",
+     "STUDIED_AT",
+     "University of Saltrene"
+    ],
+    [
+     "Delia Marsh",
+     "WORKS_FOR",
+     "Tidemark Ports"
+    ],
+    [
+     "Delia Marsh",
+     "LEADS",
+     "Orrin Freight"
+    ]
+   ]
+  },
+  "halcyon-sensor": {
+   "entities": [
+    {
+     "name": "Halcyon Sensor",
+     "type": "PRODUCT",
+     "aliases": []
+    },
+    {
+     "name": "Velltrix Systems",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "Velltrix"
+     ]
+    },
+    {
+     "name": "Prism-4",
+     "type": "PRODUCT",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Velltrix Systems",
+     "MAKES",
+     "Halcyon Sensor"
+    ],
+    [
+     "Halcyon Sensor",
+     "USES",
+     "Prism-4"
+    ]
+   ]
+  },
+  "wayfarer": {
+   "entities": [
+    {
+     "name": "Wayfarer",
+     "type": "PRODUCT",
+     "aliases": []
+    },
+    {
+     "name": "Corvane Motors",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Halcyon Sensor",
+     "type": "PRODUCT",
+     "aliases": [
+      "Halcyon Sensors"
+     ]
+    },
+    {
+     "name": "Ember-9",
+     "type": "PRODUCT",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Corvane Motors",
+     "MAKES",
+     "Wayfarer"
+    ],
+    [
+     "Wayfarer",
+     "USES",
+     "Halcyon Sensor"
+    ],
+    [
+     "Wayfarer",
+     "USES",
+     "Ember-9"
+    ]
+   ]
+  },
+  "ember-9": {
+   "entities": [
+    {
+     "name": "Ember-9",
+     "type": "PRODUCT",
+     "aliases": []
+    },
+    {
+     "name": "Brightwell Cells",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Greyfen E7",
+     "type": "PRODUCT",
+     "aliases": []
+    },
+    {
+     "name": "Greyfen Materials",
+     "type": "ORGANIZATION",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Brightwell Cells",
+     "MAKES",
+     "Ember-9"
+    ],
+    [
+     "Ember-9",
+     "USES",
+     "Greyfen E7"
+    ],
+    [
+     "Greyfen Materials",
+     "SUPPLIES",
+     "Greyfen E7"
+    ]
+   ]
+  },
+  "quorvale": {
+   "entities": [
+    {
+     "name": "Quorvale",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Ashlenmark",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Ashlen",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Quorvale Institute of Technology",
+     "type": "ORGANIZATION",
+     "aliases": [
+      "QIT"
+     ]
+    }
+   ],
+   "relations": [
+    [
+     "Quorvale",
+     "LOCATED_IN",
+     "Ashlenmark"
+    ],
+    [
+     "Quorvale",
+     "LOCATED_IN",
+     "Ashlen"
+    ]
+   ]
+  },
+  "kestrelmoor-polytechnic": {
+   "entities": [
+    {
+     "name": "Kestrelmoor Polytechnic",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Brightwell Cells",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Greta Solberg",
+     "type": "PERSON",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Kestrelmoor Polytechnic",
+     "PARTNERED_WITH",
+     "Brightwell Cells"
+    ],
+    [
+     "Greta Solberg",
+     "WORKS_FOR",
+     "Kestrelmoor Polytechnic"
+    ],
+    [
+     "Greta Solberg",
+     "FOUNDED",
+     "Brightwell Cells"
+    ]
+   ]
+  },
+  "news-orrin-fleet-expansion": {
+   "entities": [
+    {
+     "name": "Orrin Freight",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Wayfarer",
+     "type": "PRODUCT",
+     "aliases": []
+    },
+    {
+     "name": "Marrowick",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Saltrene",
+     "type": "LOCATION",
+     "aliases": []
+    },
+    {
+     "name": "Pinecrest Bank",
+     "type": "ORGANIZATION",
+     "aliases": []
+    },
+    {
+     "name": "Delia Marsh",
+     "type": "PERSON",
+     "aliases": []
+    }
+   ],
+   "relations": [
+    [
+     "Orrin Freight",
+     "USES",
+     "Wayfarer"
+    ],
+    [
+     "Pinecrest Bank",
+     "FINANCED",
+     "Orrin Freight"
+    ]
+   ]
+  }
+ }
+}
